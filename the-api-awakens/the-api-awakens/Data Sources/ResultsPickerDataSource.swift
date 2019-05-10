@@ -10,14 +10,14 @@ import UIKit
 
 class ResultsPickerDataSource: NSObject, UIPickerViewDataSource {
     
-    private var data = [Resource]()
+    private var resources = [Resource]()
     
     override init() {
         super.init()
     }
     
     func update(with resources: [Resource]) {
-        data = resources
+        self.resources = resources
     }
     
     // MARK: - Data Source
@@ -27,12 +27,12 @@ class ResultsPickerDataSource: NSObject, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return data.count
+        return resources.count
     }
     
     // MARK: - Helper
     
     func resource(at row: Int) -> Resource {
-        return data[row]
+        return resources[row]
     }
 }

@@ -8,9 +8,10 @@
 
 import Foundation
 
-enum Gender {
-    case male
-    case female
+enum Gender: String {
+    case male = "Male"
+    case female = "Female"
+    case unknown = "Unknown"
 }
 
 struct Character: Resource {
@@ -25,4 +26,10 @@ struct Character: Resource {
     var vehicles: [Vehicle] = []
     var starships: [Starship] = []
     var films: [Film] = []
+}
+
+extension Character {
+    var category: Category {
+        return .people
+    }
 }

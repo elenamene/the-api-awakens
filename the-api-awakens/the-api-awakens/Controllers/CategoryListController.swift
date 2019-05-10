@@ -1,5 +1,5 @@
 //
-//  CategoriesListController.swift
+//  CategoryListController.swift
 //  the-api-awakens
 //
 //  Created by Elena Meneghini on 01/05/2019.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CategoriesMainController: UITableViewController {
+class CategoryListController: UITableViewController {
     
-    let dataSource = CategoriesListDataSource(categories: [.people, .starships, .vehicles])
+    let dataSource = CategoryListDataSource(categories: [.people, .starships, .vehicles])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,14 +59,13 @@ class CategoriesMainController: UITableViewController {
         if segue.identifier == "ShowResults" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let category = dataSource.category(at: indexPath)
-             
-                // Call to API to get all the resources of the category
                 
                 // Assign artist to the next view controller
-                let categoryResultsController = segue.destination as! CategoryResultsController
+                let categoryResultsController = segue.destination as! CategoryResourcesController
                 categoryResultsController.category = category
                 
-                categoryResultsController.pickerDataSource.update(with: category.stubData)
+                // Call to API to get all the resources of the category
+                
             }
         }
     }
@@ -74,7 +73,7 @@ class CategoriesMainController: UITableViewController {
 
 // MARK: - Table View Delegate
 
-extension CategoriesMainController {
+extension CategoryListController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1
     }

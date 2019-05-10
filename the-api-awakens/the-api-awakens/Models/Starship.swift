@@ -12,13 +12,19 @@ struct Starship: Resource, Transport {
     var name: String
     var model: String
     var manufacturer: String
-    var cost: Int?
+    var cost: Int
     var length: Double
-    var maxAtmospheringSpeed: Int?
+    var maxAtmospheringSpeed: Int
     var crew: Int
     var passengers: Int
     let mglt: Int
     let hyperdriveRating: Double
     let starshipClass: String
     var films: [Film] = []
+}
+
+extension Starship {
+    var category: Category {
+        return .starships
+    }
 }

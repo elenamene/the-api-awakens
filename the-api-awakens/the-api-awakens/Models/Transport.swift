@@ -12,9 +12,9 @@ protocol Transport {
     var name: String { get }
     var model: String { get }
     var manufacturer: String { get }
-    var cost: Int? { get }
+    var cost: Int { get }
     var length: Double { get }
-    var maxAtmospheringSpeed: Int? { get }
+    var maxAtmospheringSpeed: Int { get }
     var crew: Int { get }
     var passengers: Int { get }
 }

@@ -12,13 +12,18 @@ struct Vehicle: Resource, Transport {
     var name: String
     var model: String
     var manufacturer: String
-    var cost: Int?
+    var cost: Int
     var length: Double
-    var maxAtmospheringSpeed: Int?
+    var maxAtmospheringSpeed: Int
     var crew: Int
     var passengers: Int
     let vehicleClass: String
     var films: [Film] = []
 }
 
+extension Vehicle {
+    var category: Category {
+        return .vehicles
+    }
+}
 

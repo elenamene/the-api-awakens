@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoriesListDataSource: NSObject {
+class CategoryListDataSource: NSObject {
     private var data: [Category] = []
     
     init(categories: [Category]) {
@@ -17,7 +17,7 @@ class CategoriesListDataSource: NSObject {
     }
 }
 
-extension CategoriesListDataSource: UITableViewDataSource {
+extension CategoryListDataSource: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

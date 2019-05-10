@@ -1,5 +1,5 @@
 //
-//  Categories.swift
+//  Category.swift
 //  the-api-awakens
 //
 //  Created by Elena Meneghini on 01/05/2019.

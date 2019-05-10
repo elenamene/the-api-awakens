@@ -22,8 +22,6 @@ class SearchResultsController: UITableViewController {
 
 extension SearchResultsController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-//        print(searchController.searchBar.text!)
-        
         dataSource.update(with: Stub.characters)
         tableView.reloadData()
     }
