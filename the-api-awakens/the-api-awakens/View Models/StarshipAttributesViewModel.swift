@@ -15,7 +15,6 @@ struct StarshipAttributesViewModel: AttributesViewModel {
 extension StarshipAttributesViewModel {
     init(starship: Starship) {
         attributes = [
-//            Attribute(name: "Name", description: starship.name),
             Attribute(name: "Model", description: starship.model.capitalizeFirstLetter()),
             Attribute(name: "Manufacturer", description: starship.manufacturer.capitalizeFirstLetter()),
             Attribute(name: "Cost", description: "\(starship.cost) Galactic Credits"),
@@ -23,7 +22,7 @@ extension StarshipAttributesViewModel {
             Attribute(name: "Speed", description: "\(starship.maxAtmospheringSpeed) atmosphere"),
             Attribute(name: "Crew", description: String(starship.crew)),
             Attribute(name: "Passengers", description: String(starship.passengers)),
-            Attribute(name: "MGLT", description: String(starship.mglt) + " MGLT"),
+            Attribute(name: "Speed", description: String(starship.mglt) + " MGLT"),
             Attribute(name: "Hyperdrive Rating", description: String(starship.hyperdriveRating)),
             Attribute(name: "Starship Class", description: starship.starshipClass.capitalizeFirstLetter()),
             Attribute(name: "Film", description: ""),

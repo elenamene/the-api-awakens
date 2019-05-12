@@ -24,7 +24,7 @@ class CategoryListController: UITableViewController {
     
     func setupTableView() {
         tableView.dataSource = dataSource
-        tableView.backgroundColor = Colors.darkBlue
+        tableView.backgroundColor = Color.darkBlue
     }
     
     func setupNavigationBar() {
@@ -45,7 +45,7 @@ class CategoryListController: UITableViewController {
         // Initiate Search Controller
         let searchController = UISearchController(searchResultsController: resultsController)
         
-        searchController.searchBar.placeholder = "Characters, Starships or Vehicles"
+        searchController.searchBar.placeholder = "Search for name or model"
         searchController.dimsBackgroundDuringPresentation = false 
         searchController.searchResultsUpdater = resultsController
         navigationItem.searchController = searchController
@@ -61,7 +61,7 @@ class CategoryListController: UITableViewController {
                 let category = dataSource.category(at: indexPath)
                 
                 // Assign artist to the next view controller
-                let categoryResultsController = segue.destination as! CategoryResourcesController
+                let categoryResultsController = segue.destination as! ResourceDetailController
                 categoryResultsController.category = category
                 
                 // Call to API to get all the resources of the category

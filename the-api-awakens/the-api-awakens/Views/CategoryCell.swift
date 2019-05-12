@@ -26,10 +26,10 @@ class CategoryCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if selected {
-            containerView.backgroundColor = Colors.selectedCardBlue
-            categoryNameLabel.textColor = Colors.lightBlue
+            containerView.backgroundColor = Color.selectedCardBlue
+            categoryNameLabel.textColor = Color.lightBlue
         } else {
-            containerView.backgroundColor = Colors.defaultCardBlue
+            containerView.backgroundColor = Color.defaultCardBlue
             categoryNameLabel.textColor = .white
         }
     }

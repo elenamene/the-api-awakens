@@ -8,8 +8,8 @@
 
 import Foundation
 
-// let height: String // convert metric units (meters) to British units (inches)
-// let mass: String // convert metric units (meters) to British units (inches)
+// height: String // convert metric units (meters) to British units (inches)
+// mass: String // convert metric units (meters) to British units (inches)
 
 struct CharacterAttributesViewModel: AttributesViewModel {
     var attributes: [Attribute]
@@ -18,7 +18,6 @@ struct CharacterAttributesViewModel: AttributesViewModel {
 extension CharacterAttributesViewModel {
     init(character: Character) {
         attributes = [
-//            Attribute(name: "Name", description: character.name),
             Attribute(name: "Height", description: "\(character.height) cm"),
             Attribute(name: "Mass", description: "\(character.mass) kg"),
             Attribute(name: "Hair Color", description: character.hairColor.capitalizeFirstLetter()),
@@ -32,50 +31,3 @@ extension CharacterAttributesViewModel {
         ]
     }
 }
-
-//struct CharacterAttributesViewModel {
-//    let name: String
-//    let height: String // convert metric units (meters) to British units (inches)
-//    let mass: String // convert metric units (meters) to British units (inches)
-//    let hairColor: String
-//    let skinColor: String
-//    let eyeColor: String
-//    let gender: String
-//    let yearOfBirth: String
-//    var vehicles: String
-//    var starships: String
-//    var films: String
-//}
-//
-//extension CharacterAttributesViewModel {
-//    init(character: Character) {
-//        self.name = character.name
-//        self.height = "\(character.height) cm"
-//        self.mass = "\(character.mass) kg"
-//        self.hairColor = character.hairColor
-//        self.skinColor = character.skinColor
-//        self.eyeColor = character.eyeColor
-//        self.gender = character.gender.rawValue
-//        self.yearOfBirth = character.yearOfBirth
-//        self.vehicles = ""
-//        self.starships = ""
-//        self.films = ""
-//    }
-//
-//    var attributes: [Attribute] {
-//        return [
-//            Attribute(name: "Name", value: self.name),
-//            Attribute(name: "Height", value: self.height),
-//            Attribute(name: "Mass", value: self.mass),
-//            Attribute(name: "Hair Color", value: self.hairColor),
-//            Attribute(name: "Skin Color", value: self.skinColor),
-//            Attribute(name: "Eye Color", value: self.eyeColor),
-//            Attribute(name: "Gender", value: self.gender),
-//            Attribute(name: "Year Of Birth", value: self.yearOfBirth),
-//            Attribute(name: "Vehicles", value: self.vehicles),
-//            Attribute(name: "Starships", value: self.starships),
-//            Attribute(name: "Films", value: self.films),
-//        ]
-//
-//    }
-//}

@@ -15,7 +15,6 @@ struct VehicleAttributesViewModel: AttributesViewModel {
 extension VehicleAttributesViewModel {
     init(vehicle: Vehicle) {
         attributes = [
-//            Attribute(name: "Name", description: vehicle.name),
             Attribute(name: "Model", description: vehicle.model.capitalizeFirstLetter()),
             Attribute(name: "Manufacturer", description: vehicle.manufacturer.capitalizeFirstLetter()),
             Attribute(name: "Cost", description: "\(vehicle.cost) Galactic Credits"),

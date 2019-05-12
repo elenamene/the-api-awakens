@@ -30,9 +30,11 @@ class SearchResultsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultsCell", for: indexPath)
+        let cell: SearchResultsCell = tableView.dequeueReusableCell(withIdentifier: "SearchResultsCell", for: indexPath) as! SearchResultsCell
         let character = data[indexPath.row]
         cell.textLabel?.text = character.name
+//        cell.backgroundColor = Color.darkBlue
+//        cell.textLabel?.textColor = .white
         
         return cell
     }

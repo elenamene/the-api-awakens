@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultsPickerDataSource: NSObject, UIPickerViewDataSource {
+class PickerDataSource: NSObject, UIPickerViewDataSource {
     
     private var resources = [Resource]()
     
