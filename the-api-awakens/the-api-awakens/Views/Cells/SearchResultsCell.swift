@@ -9,13 +9,23 @@
 import UIKit
 
 class SearchResultsCell: UITableViewCell {
+    
+    static let reuseIdentifier = "SearchResultsCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // init from interface builder
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-                self.backgroundColor = Color.darkBlue
-                self.textLabel?.textColor = .white
+        backgroundColor = Color.darkBlue
+        textLabel?.textColor = .white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

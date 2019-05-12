@@ -18,7 +18,7 @@ class SearchResultsController: UITableViewController {
         tableView.dataSource = dataSource
         
         // init cell from the nib file?
-        tableView.register(SearchResultsCell.self, forCellReuseIdentifier: "SearchResultsCell")
+        tableView.register(SearchResultsCell.self, forCellReuseIdentifier: SearchResultsCell.reuseIdentifier)
         tableView.backgroundColor = Color.darkBlue
         tableView.separatorColor = Color.lightBlue
     }

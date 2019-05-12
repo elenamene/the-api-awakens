@@ -87,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				F3551B542279F9F400218E72 /* the-api-awakens */,
+				F362630F2288975C007A15C3 /* Support Files */,
 				F3551B532279F9F400218E72 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,17 +103,12 @@
 		F3551B542279F9F400218E72 /* the-api-awakens */ = {
 			isa = PBXGroup;
 			children = (
-				F3E0865122858FE200EBDD77 /* Extensions */,
-				F3E0864A228367C600EBDD77 /* View Models */,
-				F3551B72227A01DD00218E72 /* Data Sources */,
 				F3551B692279FA1300218E72 /* Controllers */,
+				F3551B72227A01DD00218E72 /* Data Sources */,
 				F3551B682279FA0B00218E72 /* Views */,
 				F3551B672279FA0500218E72 /* Models */,
-				F3551B552279F9F400218E72 /* AppDelegate.swift */,
-				F3551B592279F9F400218E72 /* Main.storyboard */,
-				F3551B5E2279F9F600218E72 /* LaunchScreen.storyboard */,
-				F3551B7D227AEA9D00218E72 /* Images.xcassets */,
-				F3551B612279F9F600218E72 /* Info.plist */,
+				F3E0864A228367C600EBDD77 /* View Models */,
+				F3E0865122858FE200EBDD77 /* Extensions */,
 			);
 			path = "the-api-awakens";
 			sourceTree = "<group>";
@@ -136,8 +132,8 @@
 		F3551B682279FA0B00218E72 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F3551B79227A05C100218E72 /* CategoryCell.swift */,
-				F362630D22885644007A15C3 /* SearchResultsCell.swift */,
+				F362631022889829007A15C3 /* Cells */,
+				F3626305228823C5007A15C3 /* RoundButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,6 +159,27 @@
 			path = "Data Sources";
 			sourceTree = "<group>";
 		};
+		F362630F2288975C007A15C3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F3551B592279F9F400218E72 /* Main.storyboard */,
+				F3551B5E2279F9F600218E72 /* LaunchScreen.storyboard */,
+				F3551B7D227AEA9D00218E72 /* Images.xcassets */,
+				F3551B612279F9F600218E72 /* Info.plist */,
+				F3551B552279F9F400218E72 /* AppDelegate.swift */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		F362631022889829007A15C3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F3551B79227A05C100218E72 /* CategoryCell.swift */,
+				F362630D22885644007A15C3 /* SearchResultsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F3E0864A228367C600EBDD77 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				F3E0865222858FEF00EBDD77 /* String.swift */,
-				F3626305228823C5007A15C3 /* RoundButton.swift */,
 				F362630722884491007A15C3 /* UIView.swift */,
 			);
 			path = Extensions;
@@ -428,7 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7MA4G9ZS6S;
-				INFOPLIST_FILE = "the-api-awakens/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,7 +462,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7MA4G9ZS6S;
-				INFOPLIST_FILE = "the-api-awakens/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
