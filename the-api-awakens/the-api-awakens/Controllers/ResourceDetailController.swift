@@ -62,7 +62,7 @@ class ResourceDetailController: UITableViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTapGesture(recognizer:)))
         view.addGestureRecognizer(tapGesture)
     }
-    
+
     // MARK: - Dismiss Picker
     
     // Dismiss date picker when tapping outside the view

@@ -19,7 +19,7 @@ class SearchResultsDataSource: NSObject, UITableViewDataSource {
         self.results = results
     }
     
-    // MARK: Table View Data Source
+    // MARK: Data Source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -38,5 +38,11 @@ class SearchResultsDataSource: NSObject, UITableViewDataSource {
         cell.imageView?.image = character.category.iconImage
         
         return cell
+    }
+    
+    // MARK: - Helper
+    
+    func resource(at indexPath: IndexPath) -> Resource {
+        return results[indexPath.row]
     }
 }

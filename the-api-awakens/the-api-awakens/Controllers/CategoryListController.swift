@@ -52,6 +52,8 @@ class CategoryListController: UITableViewController {
         searchController.searchResultsUpdater = resultsController
         searchController.searchBar.setDefaultStyle()
         
+        // search bar does not remain on the screen
+        // if the user navigates to another view controller
         definesPresentationContext = true
     }
     
@@ -67,7 +69,6 @@ class CategoryListController: UITableViewController {
                 categoryResultsController.category = category
                 
                 // Call to API to get all the resources of the category
-                
             }
         }
     }

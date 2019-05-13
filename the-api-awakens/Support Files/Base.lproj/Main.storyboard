@@ -81,7 +81,7 @@
         <!--Resource Detail Controller-->
         <scene sceneID="356-ug-IdC">
             <objects>
-                <tableViewController id="Vvh-Dg-g01" customClass="ResourceDetailController" customModule="the_api_awakens" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ResourceDetail" id="Vvh-Dg-g01" customClass="ResourceDetailController" customModule="the_api_awakens" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="18" id="yfT-0z-aQE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

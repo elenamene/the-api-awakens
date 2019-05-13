@@ -10,7 +10,11 @@ import UIKit
 
 class SearchResultsCell: UITableViewCell {
     
+    // MARK - Properties
+    
     static let reuseIdentifier = "SearchResultsCell"
+    
+    // MARK - Cell
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +27,9 @@ class SearchResultsCell: UITableViewCell {
         backgroundColor = Color.darkBlue
         textLabel?.textColor = .white
         selectionStyle = .none
+        
+        // Add target to show segue
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,6 +51,12 @@ class SearchResultsCell: UITableViewCell {
         super.layoutSubviews()
         imageView?.frame = CGRect(x: 16, y: 10, width: 25, height: 25)
         textLabel?.frame = CGRect(x: 56, y: 12, width: 400, height: 20)
+    }
+    
+    // MARK - Actions
+    
+    @objc func showResourceDetail(sender: Any) {
+        print("test")
     }
 
 }

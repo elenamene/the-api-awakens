@@ -35,4 +35,8 @@ class PickerDataSource: NSObject, UIPickerViewDataSource {
     func resource(at row: Int) -> Resource {
         return resources[row]
     }
+    
+    func index(of resource: Resource) -> Int? {
+        return resources.firstIndex(where: { $0.name == resource.name }) ?? nil
+    }
 }
