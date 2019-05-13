@@ -45,10 +45,12 @@ class CategoryListController: UITableViewController {
         // Initiate Search Controller
         let searchController = UISearchController(searchResultsController: resultsController)
         
-        searchController.searchBar.placeholder = "Search for name or model"
+        // Set search bar in navigation bar
+        navigationItem.searchController = searchController
+        
         searchController.dimsBackgroundDuringPresentation = false 
         searchController.searchResultsUpdater = resultsController
-        navigationItem.searchController = searchController
+        searchController.searchBar.setDefaultStyle()
         
         definesPresentationContext = true
     }

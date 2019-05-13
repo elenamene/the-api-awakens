@@ -9,10 +9,10 @@
 import UIKit
 
 class CategoryListDataSource: NSObject {
-    private var data: [Category] = []
+    private var categories: [Category] = []
     
     init(categories: [Category]) {
-        self.data = categories
+        self.categories = categories
         super.init()
     }
 }
@@ -23,12 +23,12 @@ extension CategoryListDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as? CategoryCell else { fatalError() }
-        let category = data[indexPath.row]
+        let category = categories[indexPath.row]
         cell.categoryIcon.image = category.iconImage
         cell.categoryNameLabel.text = category.name
             
@@ -38,6 +38,6 @@ extension CategoryListDataSource: UITableViewDataSource {
     // MARK: - Helper Methods
     
     func category(at indexPath: IndexPath) -> Category {
-        return data[indexPath.row]
+        return categories[indexPath.row]
     }
 }

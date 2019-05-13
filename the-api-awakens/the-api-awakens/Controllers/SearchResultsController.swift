@@ -17,16 +17,20 @@ class SearchResultsController: UITableViewController {
         
         tableView.dataSource = dataSource
         
-        // init cell from the nib file?
+        // Register the cell class I want to use in the tableView
         tableView.register(SearchResultsCell.self, forCellReuseIdentifier: SearchResultsCell.reuseIdentifier)
+        
+        // Table view styling
         tableView.backgroundColor = Color.darkBlue
         tableView.separatorColor = Color.lightBlue
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
 }
 
 extension SearchResultsController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        dataSource.update(with: Stub.characters)
+        let results: [Resource] = Stub.characters + Stub.starships + Stub.vehicles
+        dataSource.update(with: results)
         tableView.reloadData()
     }
 }

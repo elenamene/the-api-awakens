@@ -11,7 +11,7 @@ import UIKit
 class SearchResultsCell: UITableViewCell {
     
     static let reuseIdentifier = "SearchResultsCell"
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // init from interface builder
@@ -22,6 +22,7 @@ class SearchResultsCell: UITableViewCell {
         
         backgroundColor = Color.darkBlue
         textLabel?.textColor = .white
+        selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,8 +31,19 @@ class SearchResultsCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        if selected {
+            backgroundColor = Color.selectedItem
+        } else {
+            backgroundColor = Color.darkBlue
+        }
 
-        // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView?.frame = CGRect(x: 16, y: 10, width: 25, height: 25)
+        textLabel?.frame = CGRect(x: 56, y: 12, width: 400, height: 20)
     }
 
 }

@@ -36,6 +36,7 @@
 		F3E08650228373FD00EBDD77 /* StarshipAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864F228373FD00EBDD77 /* StarshipAttributesViewModel.swift */; };
 		F3E0865322858FEF00EBDD77 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0865222858FEF00EBDD77 /* String.swift */; };
 		F3E086552285941F00EBDD77 /* AttributeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E086542285941F00EBDD77 /* AttributeViewModel.swift */; };
+		F3E212A322895BB900F20676 /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E212A222895BB900F20676 /* UISearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		F3E0864F228373FD00EBDD77 /* StarshipAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipAttributesViewModel.swift; sourceTree = "<group>"; };
 		F3E0865222858FEF00EBDD77 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F3E086542285941F00EBDD77 /* AttributeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeViewModel.swift; sourceTree = "<group>"; };
+		F3E212A222895BB900F20676 /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			children = (
 				F3E0865222858FEF00EBDD77 /* String.swift */,
 				F362630722884491007A15C3 /* UIView.swift */,
+				F3E212A222895BB900F20676 /* UISearchBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				F3551B8C227B260200218E72 /* Stub.swift in Sources */,
 				F3551B86227B09E800218E72 /* Film.swift in Sources */,
 				F362630E22885644007A15C3 /* SearchResultsCell.swift in Sources */,
+				F3E212A322895BB900F20676 /* UISearchBar.swift in Sources */,
 				F33D1E2322804B5400840BC4 /* PickerDataSource.swift in Sources */,
 				F3551B74227A021400218E72 /* CategoryListDataSource.swift in Sources */,
 				F3E0864E22836EAE00EBDD77 /* VehicleAttributesViewModel.swift in Sources */,

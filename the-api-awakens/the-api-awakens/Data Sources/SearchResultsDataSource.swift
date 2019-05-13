@@ -9,14 +9,14 @@
 import UIKit
 
 class SearchResultsDataSource: NSObject, UITableViewDataSource {
-    private var data = [Character]()
+    private var results = [Resource]()
     
     override init() {
         super.init()
     }
     
-    func update(with results: [Character]) {
-        data = results
+    func update(with results: [Resource]) {
+        self.results = results
     }
     
     // MARK: Table View Data Source
@@ -26,15 +26,16 @@ class SearchResultsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultsCell.reuseIdentifier, for: indexPath) as! SearchResultsCell
-        let character = data[indexPath.row]
+        
+        let character = results[indexPath.row]
+        
         cell.textLabel?.text = character.name
-//        cell.backgroundColor = Color.darkBlue
-//        cell.textLabel?.textColor = .white
+        cell.imageView?.image = character.category.iconImage
         
         return cell
     }
