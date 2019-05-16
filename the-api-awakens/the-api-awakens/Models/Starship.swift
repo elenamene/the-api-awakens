@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Starship: Resource, Transport {
+struct Starship: Resource, Transport, Decodable {
     var name: String
     var model: String
     var manufacturer: String
@@ -21,6 +21,21 @@ struct Starship: Resource, Transport {
     let hyperdriveRating: Double
     let starshipClass: String
     var films: [Film] = []
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case model
+        case manufacturer
+        case cost = "cost_in_credits"
+        case length
+        case maxAtmospheringSpeed = "max_atmosphering_speed"
+        case crew
+        case passengers
+        case mglt = "MGLT"
+        case hyperdriveRating = "hyperdrive_rating"
+        case starshipClass = "starship_class"
+        case films
+    }
 }
 
 extension Starship {

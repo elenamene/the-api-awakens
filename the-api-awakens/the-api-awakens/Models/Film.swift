@@ -8,12 +8,17 @@
 
 import Foundation
 
-struct Film {
+struct Film: Decodable {
     let title: String
     let episodeId: Int
 //    let director: String
 //    let producer: String
 //    let releaseDate: Date
 //    var characters: [Character] = []
+    
+    private enum CodingKeys: String, CodingKey {
+        case title
+        case episodeId = "episode_id"
+    }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F31765D1228B16C90056DAA7 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31765D0228B16C90056DAA7 /* JSONResponse.swift */; };
 		F33D1E07227C817600840BC4 /* SearchResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33D1E06227C817600840BC4 /* SearchResultsDataSource.swift */; };
 		F33D1E21227F620B00840BC4 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33D1E20227F620B00840BC4 /* Resource.swift */; };
 		F33D1E2322804B5400840BC4 /* PickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33D1E2222804B5400840BC4 /* PickerDataSource.swift */; };
@@ -37,9 +38,13 @@
 		F3E0865322858FEF00EBDD77 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0865222858FEF00EBDD77 /* String.swift */; };
 		F3E086552285941F00EBDD77 /* AttributeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E086542285941F00EBDD77 /* AttributeViewModel.swift */; };
 		F3E212A322895BB900F20676 /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E212A222895BB900F20676 /* UISearchBar.swift */; };
+		F3E212A62289B5CD00F20676 /* StarWarsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E212A52289B5CD00F20676 /* StarWarsAPIClient.swift */; };
+		F3E212A92289B7FB00F20676 /* StarWarsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E212A82289B7FB00F20676 /* StarWarsEndpoint.swift */; };
+		F3E212AF2289C91900F20676 /* StarWarsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E212AE2289C91900F20676 /* StarWarsError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F31765D0228B16C90056DAA7 /* JSONResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
 		F33D1E06227C817600840BC4 /* SearchResultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDataSource.swift; sourceTree = "<group>"; };
 		F33D1E20227F620B00840BC4 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		F33D1E2222804B5400840BC4 /* PickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataSource.swift; sourceTree = "<group>"; };
@@ -72,6 +77,9 @@
 		F3E0865222858FEF00EBDD77 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F3E086542285941F00EBDD77 /* AttributeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeViewModel.swift; sourceTree = "<group>"; };
 		F3E212A222895BB900F20676 /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
+		F3E212A52289B5CD00F20676 /* StarWarsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAPIClient.swift; sourceTree = "<group>"; };
+		F3E212A82289B7FB00F20676 /* StarWarsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsEndpoint.swift; sourceTree = "<group>"; };
+		F3E212AE2289C91900F20676 /* StarWarsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,7 @@
 		F3551B542279F9F400218E72 /* the-api-awakens */ = {
 			isa = PBXGroup;
 			children = (
+				F3E212A42289B5A800F20676 /* Networking */,
 				F3551B692279FA1300218E72 /* Controllers */,
 				F3551B72227A01DD00218E72 /* Data Sources */,
 				F3551B682279FA0B00218E72 /* Views */,
@@ -203,6 +212,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F3E212A42289B5A800F20676 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F3E212A82289B7FB00F20676 /* StarWarsEndpoint.swift */,
+				F3E212A52289B5CD00F20676 /* StarWarsAPIClient.swift */,
+				F3E212AE2289C91900F20676 /* StarWarsError.swift */,
+				F31765D0228B16C90056DAA7 /* JSONResponse.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -275,9 +295,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3551B80227B07C900218E72 /* Character.swift in Sources */,
+				F3E212A92289B7FB00F20676 /* StarWarsEndpoint.swift in Sources */,
 				F3E08650228373FD00EBDD77 /* StarshipAttributesViewModel.swift in Sources */,
 				F3551B8C227B260200218E72 /* Stub.swift in Sources */,
 				F3551B86227B09E800218E72 /* Film.swift in Sources */,
+				F3E212A62289B5CD00F20676 /* StarWarsAPIClient.swift in Sources */,
 				F362630E22885644007A15C3 /* SearchResultsCell.swift in Sources */,
 				F3E212A322895BB900F20676 /* UISearchBar.swift in Sources */,
 				F33D1E2322804B5400840BC4 /* PickerDataSource.swift in Sources */,
@@ -287,6 +309,7 @@
 				F3E086552285941F00EBDD77 /* AttributeViewModel.swift in Sources */,
 				F3551B7C227AD83200218E72 /* Color.swift in Sources */,
 				F3551B562279F9F400218E72 /* AppDelegate.swift in Sources */,
+				F3E212AF2289C91900F20676 /* StarWarsError.swift in Sources */,
 				F3626306228823C5007A15C3 /* RoundButton.swift in Sources */,
 				F3930A78227B480E00598F59 /* SearchResultsController.swift in Sources */,
 				F3551B6F2279FD5300218E72 /* CategoryListController.swift in Sources */,
@@ -300,6 +323,7 @@
 				F3551B82227B092500218E72 /* Vehicle.swift in Sources */,
 				F3551B78227A026C00218E72 /* Category.swift in Sources */,
 				F3551B88227B0D3E00218E72 /* Transport.swift in Sources */,
+				F31765D1228B16C90056DAA7 /* JSONResponse.swift in Sources */,
 				F33D1E21227F620B00840BC4 /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

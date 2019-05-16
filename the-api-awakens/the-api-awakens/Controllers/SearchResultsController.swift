@@ -23,7 +23,7 @@ class SearchResultsController: UITableViewController {
         
         // Table view styling
         tableView.backgroundColor = Color.darkBlue
-        tableView.separatorColor = Color.lightBlue
+        tableView.separatorColor = Color.selectedItem
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
 }

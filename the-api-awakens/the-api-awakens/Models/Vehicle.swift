@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Vehicle: Resource, Transport {
+struct Vehicle: Resource, Transport, Decodable {
     var name: String
     var model: String
     var manufacturer: String
@@ -19,6 +19,19 @@ struct Vehicle: Resource, Transport {
     var passengers: Int
     let vehicleClass: String
     var films: [Film] = []
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case model
+        case manufacturer
+        case cost = "cost_in_credits"
+        case length
+        case maxAtmospheringSpeed = "max_atmosphering_speed"
+        case crew
+        case passengers
+        case vehicleClass = "vehicle_class"
+        case films
+    }
 }
 
 extension Vehicle {

@@ -11,6 +11,7 @@ import UIKit
 class CategoryListController: UITableViewController {
     
     let dataSource = CategoryListDataSource(categories: [.people, .starships, .vehicles])
+    let client = StarWarsAPIClient()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +70,14 @@ class CategoryListController: UITableViewController {
                 categoryResultsController.category = category
                 
                 // Call to API to get all the resources of the category
-            }
+                
+                client.fetchAllResources(for: category) { result in
+                    switch result {
+                    case .success(let resources): categoryResultsController.pickerDataSource.update(with: resources)
+                    case .failure(let error): print(error)
+                    }
+                }
+             }
         }
     }
 }
