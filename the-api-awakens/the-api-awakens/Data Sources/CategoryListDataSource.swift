@@ -28,7 +28,9 @@ extension CategoryListDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as? CategoryCell else { fatalError() }
+        
         let category = categories[indexPath.row]
+        
         cell.categoryIcon.image = category.iconImage
         cell.categoryNameLabel.text = category.name
             

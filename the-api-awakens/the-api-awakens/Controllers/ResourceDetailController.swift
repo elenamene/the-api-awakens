@@ -17,7 +17,6 @@ class ResourceDetailController: UITableViewController {
     var category: Category? {
         didSet {
             if let category = category {
-                print("Category passed in didSet: \(category.name)")
                 self.title = category.name
             }
         }
@@ -26,7 +25,6 @@ class ResourceDetailController: UITableViewController {
     var categoryResources: [Resource]? {
         didSet {
             if let categoryResources = categoryResources {
-                print("categoryResources passed in didSet: \(categoryResources)")
                 pickerDataSource.update(with: categoryResources)
             }
         }
@@ -39,6 +37,7 @@ class ResourceDetailController: UITableViewController {
     
     lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
+        
         pickerView.delegate = self
         pickerView.dataSource = pickerDataSource
         pickerView.selectRow(0, inComponent: 0, animated: true)
@@ -57,15 +56,14 @@ class ResourceDetailController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Category in viewDidLoad: \(category?.name)")
     
         iconButton.setImage(category?.iconImage, for: .normal)
         
-        // TableView
+        // Table View
         tableView.dataSource = dataSource
         dataSource.update(with: selectedResource)
         
-        // ResourceNameTextField
+        // Name Text Field
         resourceNameTextField.inputView = pickerView
         resourceNameTextField.text = selectedResource.name
         
@@ -100,13 +98,10 @@ extension ResourceDetailController: UIPickerViewDelegate {
     
     // Update nameLabel and tableView text with row selected
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let resourceSelected = pickerDataSource.resource(at: row)
-        
-        resourceNameTextField.text = resourceSelected.name
-        dataSource.update(with: resourceSelected)
+        resourceNameTextField.text = selectedResource.name
+        dataSource.update(with: selectedResource)
         tableView.reloadData()
         iconButton.isSelected = false
-        self.view.endEditing(true)
     }
 }
 

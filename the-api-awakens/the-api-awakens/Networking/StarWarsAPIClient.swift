@@ -22,8 +22,6 @@ class StarWarsAPIClient {
     let decoder = JSONDecoder()
     
     func fetch(_ category: Category, completion: @escaping (Result<[Resource], StarWarsError>) -> Void) {
-        print("called fetch")
-        
         performRequestWith(endpoint: category.endpoint) { result in
             completion(result)
         }
@@ -31,15 +29,10 @@ class StarWarsAPIClient {
 }
 
 private extension StarWarsAPIClient {
-    /// Generic func to download json with format: JSONResponse<T>
     func performRequestWith(endpoint: StarWarsEndpoint, completion: @escaping (Result<[Resource], StarWarsError>) -> Void) {
-        print("called performRequestWith  endpoint: \(endpoint.request)")
-        print(endpoint)
         let task = session.dataTask(with: endpoint.request) { (data, response, error) in
-             print("session.dataTask called")
             
             DispatchQueue.main.async {
-                print("DispatchQueue.main.sync called")
                 
                 guard let data = data else {
                     completion(.failure(StarWarsError.invalidData))
@@ -59,15 +52,12 @@ private extension StarWarsAPIClient {
                 do {
                     switch endpoint {
                     case .people:
-                        print("inside people case")
                         let jsonResponse = try self.decoder.decode(JSONResponse<Character>.self, from: data)
                          completion(.success(jsonResponse.results))
                     case .vehicles:
-                        print("inside vehicles case")
                         let jsonResponse = try self.decoder.decode(JSONResponse<Vehicle>.self, from: data)
                          completion(.success(jsonResponse.results))
                     case .starships:
-                         print("inside starships case")
                         let jsonResponse = try self.decoder.decode(JSONResponse<Starship>.self, from: data)
                          completion(.success(jsonResponse.results))
                     }
