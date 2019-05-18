@@ -64,7 +64,6 @@
                                     <outlet property="categoryIcon" destination="qVv-po-Yxm" id="zYI-e8-rMC"/>
                                     <outlet property="categoryNameLabel" destination="9yV-wc-O7t" id="Bpt-3q-yJh"/>
                                     <outlet property="containerView" destination="ISw-0x-tjP" id="udG-mr-tV1"/>
-                                    <segue destination="Vvh-Dg-g01" kind="show" identifier="ShowResults" id="OSb-rc-0OR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -83,7 +82,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ResourceDetail" id="Vvh-Dg-g01" customClass="ResourceDetailController" customModule="the_api_awakens" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="18" id="yfT-0z-aQE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1058823529" green="0.12549019610000001" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.14117647059999999" green="0.1647058824" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -152,7 +151,6 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="Vvh-Dg-g01" id="NDW-qb-BwR"/>
                             <outlet property="delegate" destination="Vvh-Dg-g01" id="cM2-Vy-I3y"/>
                         </connections>
                     </tableView>

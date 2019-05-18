@@ -16,10 +16,6 @@ class PickerDataSource: NSObject, UIPickerViewDataSource {
         super.init()
     }
     
-    func update(with resources: [Resource]) {
-        self.resources = resources
-    }
-    
     // MARK: - Data Source
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -31,6 +27,10 @@ class PickerDataSource: NSObject, UIPickerViewDataSource {
     }
     
     // MARK: - Helper
+    
+    func update(with resources: [Resource]) {
+        self.resources = resources
+    }
     
     func resource(at row: Int) -> Resource {
         return resources[row]

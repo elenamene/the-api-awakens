@@ -10,8 +10,8 @@ import UIKit
 
 class CategoryListController: UITableViewController {
     
-    let dataSource = CategoryListDataSource(categories: [.people, .starships, .vehicles])
     let client = StarWarsAPIClient()
+    let dataSource = CategoryListDataSource(categories: [.people, .starships, .vehicles])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,29 +57,6 @@ class CategoryListController: UITableViewController {
         // if the user navigates to another view controller
         definesPresentationContext = true
     }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowResults" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let category = dataSource.category(at: indexPath)
-                
-                // Assign artist to the next view controller
-                let categoryResultsController = segue.destination as! ResourceDetailController
-                categoryResultsController.category = category
-                
-                // Call to API to get all the resources of the category
-                
-                client.fetchAllResources(for: category) { result in
-                    switch result {
-                    case .success(let resources): categoryResultsController.pickerDataSource.update(with: resources)
-                    case .failure(let error): print(error)
-                    }
-                }
-             }
-        }
-    }
 }
 
 // MARK: - Table View Delegate
@@ -87,5 +64,39 @@ class CategoryListController: UITableViewController {
 extension CategoryListController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = dataSource.category(at: indexPath)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        print("tapped on \(category.name)")
+        
+        if let resourceDetailController = storyboard.instantiateViewController(withIdentifier: "ResourceDetail") as? ResourceDetailController {
+            resourceDetailController.category = category
+            print("Category Passed to vc: \(resourceDetailController.category!.name)")
+            
+            client.fetch(category) { result in
+                print("fetching...")
+                
+                switch result {
+                case .success(let resources):
+                    print("success")
+                    resources.forEach() { print($0) }
+                    resourceDetailController.categoryResources = resources
+                    
+                    self.navigationController?.pushViewController(resourceDetailController, animated: true)
+                    
+                case .failure(let error):
+                    print(error)
+                    
+                    let alertController = UIAlertController(title: "Something went wrong", message: "\(error)", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alertController.addAction(action)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
+        
     }
 }

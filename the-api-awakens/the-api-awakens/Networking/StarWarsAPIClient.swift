@@ -8,21 +8,6 @@
 
 import Foundation
 
-//enum Result<Value> {
-//    case success(Value)
-//    case failure(Error)
-//}
-
-/*
- client.fetch(category: .people) { result in
- switch result {
- case .success(let resources): vc.picker.datasource.update
- case .failure(let error):
- }
- }
- }
- */
-
 class StarWarsAPIClient {
     let session: URLSession
     
@@ -31,24 +16,31 @@ class StarWarsAPIClient {
     }
     
     convenience init() {
-        self.init(configuration: .default)
+        self.init(configuration: URLSessionConfiguration.default)
     }
     
     let decoder = JSONDecoder()
     
-    func fetchAllResources<T: Decodable>(for category: Category, completion: @escaping (Result<[T], StarWarsError>) -> Void) {
+    func fetch(_ category: Category, completion: @escaping (Result<[Resource], StarWarsError>) -> Void) {
+        print("called fetch")
+        
         performRequestWith(endpoint: category.endpoint) { result in
-           completion(result)
+            completion(result)
         }
     }
 }
 
-extension StarWarsAPIClient {
+private extension StarWarsAPIClient {
     /// Generic func to download json with format: JSONResponse<T>
-    private func performRequestWith<T: Decodable>(endpoint: StarWarsEndpoint, completion: @escaping (Result<[T], StarWarsError>) -> Void) {
-        
+    func performRequestWith(endpoint: StarWarsEndpoint, completion: @escaping (Result<[Resource], StarWarsError>) -> Void) {
+        print("called performRequestWith  endpoint: \(endpoint.request)")
+        print(endpoint)
         let task = session.dataTask(with: endpoint.request) { (data, response, error) in
+             print("session.dataTask called")
+            
             DispatchQueue.main.async {
+                print("DispatchQueue.main.sync called")
+                
                 guard let data = data else {
                     completion(.failure(StarWarsError.invalidData))
                     return
@@ -65,11 +57,33 @@ extension StarWarsAPIClient {
                 }
                 
                 do {
-                    let jsonResponse = try self.decoder.decode(JSONResponse<T>.self, from: data)
-                    let results = jsonResponse.results
-                    completion(.success(results))
-                } catch let error {
-                    completion(.failure(StarWarsError.jsonConversionFailure(description: "\(error.localizedDescription)")))
+                    switch endpoint {
+                    case .people:
+                        print("inside people case")
+                        let jsonResponse = try self.decoder.decode(JSONResponse<Character>.self, from: data)
+                         completion(.success(jsonResponse.results))
+                    case .vehicles:
+                        print("inside vehicles case")
+                        let jsonResponse = try self.decoder.decode(JSONResponse<Vehicle>.self, from: data)
+                         completion(.success(jsonResponse.results))
+                    case .starships:
+                         print("inside starships case")
+                        let jsonResponse = try self.decoder.decode(JSONResponse<Starship>.self, from: data)
+                         completion(.success(jsonResponse.results))
+                    }
+                } catch let DecodingError.dataCorrupted(context) {
+                    print(context)
+                } catch let DecodingError.keyNotFound(key, context) {
+                    print("Key '\(key)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch let DecodingError.valueNotFound(value, context) {
+                    print("Value '\(value)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch let DecodingError.typeMismatch(type, context)  {
+                    print("Type '\(type)' mismatch:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch {
+                    print("error: ", error)
                 }
             }
         }
@@ -77,4 +91,5 @@ extension StarWarsAPIClient {
         task.resume()
     }
 }
+
 

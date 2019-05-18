@@ -12,13 +12,13 @@ struct Vehicle: Resource, Transport, Decodable {
     var name: String
     var model: String
     var manufacturer: String
-    var cost: Int
-    var length: Double
-    var maxAtmospheringSpeed: Int
-    var crew: Int
-    var passengers: Int
+    var cost: String
+    var length: String
+    var maxAtmospheringSpeed: String
+    var crew: String
+    var passengers: String
     let vehicleClass: String
-    var films: [Film] = []
+    var films: [String] = []
     
     private enum CodingKeys: String, CodingKey {
         case name
@@ -39,4 +39,3 @@ extension Vehicle {
         return .vehicles
     }
 }
-

@@ -12,12 +12,22 @@ class ResourceDetailController: UITableViewController {
     
     // MARK: - Properties
     
+    var pickerDataSource = PickerDataSource()
+    
     var category: Category? {
         didSet {
             if let category = category {
+                print("Category passed in didSet: \(category.name)")
                 self.title = category.name
-                pickerDataSource.update(with: category.stubData)
-                pickerView.selectRow(0, inComponent: 0, animated: true)
+            }
+        }
+    }
+    
+    var categoryResources: [Resource]? {
+        didSet {
+            if let categoryResources = categoryResources {
+                print("categoryResources passed in didSet: \(categoryResources)")
+                pickerDataSource.update(with: categoryResources)
             }
         }
     }
@@ -29,14 +39,14 @@ class ResourceDetailController: UITableViewController {
     
     lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
-        pickerView.dataSource = pickerDataSource
         pickerView.delegate = self
+        pickerView.dataSource = pickerDataSource
+        pickerView.selectRow(0, inComponent: 0, animated: true)
         
         return pickerView
     }()
     
     lazy var dataSource = ResourceDetailDataSource(resource: selectedResource)
-    var pickerDataSource = PickerDataSource()
     
     // MARK: - Outlets
     
@@ -47,7 +57,8 @@ class ResourceDetailController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("Category in viewDidLoad: \(category?.name)")
+    
         iconButton.setImage(category?.iconImage, for: .normal)
         
         // TableView

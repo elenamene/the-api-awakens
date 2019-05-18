@@ -8,38 +8,26 @@
 
 import Foundation
 
-enum Gender: String, Decodable {
-    case male = "Male"
-    case female = "Female"
-    case unknown = "Unknown"
-    
-    private enum CodingKeys: String, CodingKey {
-        case male
-        case female
-        case unknown // -> "n/a"
-    }
-}
-
 struct Character: Resource, Decodable {
     let name: String
-    let height: Int
-    let mass: Int
+    let height: String
+    let mass: String
     let hairColor: String
     let skinColor: String
     let eyeColor: String
-    let gender: Gender
+    let gender: String
     let yearOfBirth: String
-    var vehicles: [Vehicle] = []
-    var starships: [Starship] = []
-    var films: [Film] = []
+    var vehicles: [String] = []
+    var starships: [String] = []
+    var films: [String] = []
     
     private enum CodingKeys: String, CodingKey {
         case name
         case height
         case mass
-        case hairColor
-        case skinColor
-        case eyeColor
+        case hairColor = "hair_color"
+        case skinColor = "skin_color"
+        case eyeColor = "eye_color"
         case gender
         case yearOfBirth = "birth_year"
         case vehicles

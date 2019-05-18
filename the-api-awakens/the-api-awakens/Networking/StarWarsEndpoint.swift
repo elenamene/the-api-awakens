@@ -57,3 +57,11 @@ extension StarWarsEndpoint: Endpoint {
     
     
 }
+
+extension StarWarsEndpoint: Equatable {
+    static func == (lhs: StarWarsEndpoint, rhs: StarWarsEndpoint) -> Bool {
+        return
+            lhs.base == rhs.base &&
+            lhs.path == rhs.path
+    }
+}
