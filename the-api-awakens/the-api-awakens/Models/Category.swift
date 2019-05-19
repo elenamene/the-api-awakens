@@ -32,14 +32,6 @@ extension Category {
         }
     }
     
-    var endpoint: StarWarsEndpoint {
-        switch self {
-        case .people: return StarWarsEndpoint.people
-        case .vehicles: return StarWarsEndpoint.vehicles
-        case .starships: return StarWarsEndpoint.starships
-        }
-    }
-    
     var stubData: [Resource] {
         switch self {
         case .people: return Stub.characters

@@ -40,4 +40,8 @@ extension Character {
     var category: Category {
         return .people
     }
+    
+    static var endpoint: StarWarsEndpoint {
+        return .people
+    }
 }

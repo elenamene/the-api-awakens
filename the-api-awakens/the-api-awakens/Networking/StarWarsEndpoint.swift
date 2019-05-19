@@ -54,14 +54,4 @@ extension StarWarsEndpoint: Endpoint {
         // TODO: - Add code for query items page
         return nil
     }
-    
-    
-}
-
-extension StarWarsEndpoint: Equatable {
-    static func == (lhs: StarWarsEndpoint, rhs: StarWarsEndpoint) -> Bool {
-        return
-            lhs.base == rhs.base &&
-            lhs.path == rhs.path
-    }
 }
