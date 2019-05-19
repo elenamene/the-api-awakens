@@ -22,6 +22,16 @@ struct Starship: Resource, Transport, Decodable {
     let starshipClass: String
     var films: [String] = []
     
+    
+}
+
+extension Starship {
+    var category: Category {
+        return .starships
+    }
+}
+
+extension Starship {
     private enum CodingKeys: String, CodingKey {
         case name
         case model
@@ -36,14 +46,20 @@ struct Starship: Resource, Transport, Decodable {
         case starshipClass = "starship_class"
         case films
     }
-}
-
-extension Starship {
-    var category: Category {
-        return .starships
-    }
     
-    static var endpoint: StarWarsEndpoint {
-        return .starships
-    }
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        self.name = try container.decode(String.self, forKey: .name)
+//        self.model = try container.decode(String.self, forKey: .model)
+//        self.manufacturer = try container.decode(String.self, forKey: .manufacturer)
+//        self.cost = try container.decode(String.self, forKey: .cost)
+//        self.length = try container.decode(String.self, forKey: .length)
+//        self.maxAtmospheringSpeed = try container.decode(String.self, forKey: .maxAtmospheringSpeed)
+//        self.crew = try container.decode(String.self, forKey: .crew)
+//        self.passengers = try container.decode(String.self, forKey: .passengers)
+//        self.mglt = try container.decode(String.self, forKey: .mglt)
+//        self.hyperdriveRating = try container.decode(String.self, forKey: .hyperdriveRating)
+//        self.starshipClass = try container.decode(String.self, forKey: .starshipClass)
+//        self.films = try container.decode([String].self, forKey: .films)
+//    }
 }

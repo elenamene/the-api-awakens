@@ -11,5 +11,4 @@ import Foundation
 protocol Resource {
     var name: String { get } // name for the picker
     var category: Category { get }
-    static var endpoint: StarWarsEndpoint { get }
 }

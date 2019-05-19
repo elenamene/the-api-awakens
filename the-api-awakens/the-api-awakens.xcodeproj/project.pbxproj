@@ -31,7 +31,6 @@
 		F3626306228823C5007A15C3 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3626305228823C5007A15C3 /* RoundButton.swift */; };
 		F362630822884491007A15C3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F362630722884491007A15C3 /* UIView.swift */; };
 		F362630E22885644007A15C3 /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F362630D22885644007A15C3 /* SearchResultsCell.swift */; };
-		F376AE8A22916EB000E9C6E3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376AE8922916EB000E9C6E3 /* UIViewController.swift */; };
 		F3930A78227B480E00598F59 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3930A77227B480E00598F59 /* SearchResultsController.swift */; };
 		F3E0864C2283685900EBDD77 /* CharacterAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864B2283685900EBDD77 /* CharacterAttributesViewModel.swift */; };
 		F3E0864E22836EAE00EBDD77 /* VehicleAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864D22836EAE00EBDD77 /* VehicleAttributesViewModel.swift */; };
@@ -71,7 +70,6 @@
 		F3626305228823C5007A15C3 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		F362630722884491007A15C3 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F362630D22885644007A15C3 /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
-		F376AE8922916EB000E9C6E3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		F3930A77227B480E00598F59 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		F3E0864B2283685900EBDD77 /* CharacterAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAttributesViewModel.swift; sourceTree = "<group>"; };
 		F3E0864D22836EAE00EBDD77 /* VehicleAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAttributesViewModel.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				F3E0865222858FEF00EBDD77 /* String.swift */,
 				F362630722884491007A15C3 /* UIView.swift */,
 				F3E212A222895BB900F20676 /* UISearchBar.swift */,
-				F376AE8922916EB000E9C6E3 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,7 +308,6 @@
 				F3551B84227B095500218E72 /* Starship.swift in Sources */,
 				F3E086552285941F00EBDD77 /* AttributeViewModel.swift in Sources */,
 				F3551B7C227AD83200218E72 /* Color.swift in Sources */,
-				F376AE8A22916EB000E9C6E3 /* UIViewController.swift in Sources */,
 				F3551B562279F9F400218E72 /* AppDelegate.swift in Sources */,
 				F3E212AF2289C91900F20676 /* StarWarsError.swift in Sources */,
 				F3626306228823C5007A15C3 /* RoundButton.swift in Sources */,

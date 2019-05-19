@@ -38,8 +38,4 @@ extension Vehicle {
     var category: Category {
         return .vehicles
     }
-    
-    static var endpoint: StarWarsEndpoint {
-        return .vehicles
-    }
 }

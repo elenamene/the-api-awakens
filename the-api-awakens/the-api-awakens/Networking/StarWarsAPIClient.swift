@@ -8,53 +8,32 @@
 
 import Foundation
 
-class StarWarsAPIClient<T: Resource> where T: Decodable {
+class StarWarsAPIClient {
+    let session: URLSession
     
-    private static var session: URLSession {
-        return URLSession(configuration: .default)
+    init(configuration: URLSessionConfiguration) {
+        self.session = URLSession(configuration: configuration)
     }
     
-    private static var decoder: JSONDecoder {
-        return JSONDecoder()
+    convenience init() {
+        self.init(configuration: URLSessionConfiguration.default)
     }
     
-    // Specific
+    let decoder = JSONDecoder()
     
-//    static func fetchAllCharacters(completion: @escaping (Result<[Character], StarWarsError>) -> Void) {
-//        performRequestWith(endpoint: StarWarsEndpoint.people) { (result) in
-//            if let result = result as? Result<JSONResponse<Character>, StarWarsError> {
-//                switch result {
-//                case .success(let response): completion(.success(response.results))
-//                case .failure(let error): completion(.failure(error))
-//                }
-//            }
-//        }
-//    }
-    
-
-    /// Generic method to fetch all resources of type T
-    /// At completion will return an array of resources of type T or a StarWarsError
-    static func fetchAll(completion: @escaping (Result<[T], StarWarsError>) -> Void) {
-        performRequestWith(endpoint: T.endpoint) { result in
-            switch result {
-            case .success(let response):
-                let resources = response.results
-                completion(.success(resources))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+    func fetch(_ category: Category, completion: @escaping (Result<[Resource], StarWarsError>) -> Void) {
+        performRequestWith(endpoint: category.endpoint) { result in
+            completion(result)
         }
     }
-
 }
 
 private extension StarWarsAPIClient {
-    /// Generic method to perform a request with an endpoint of type StarwarsEndpoint
-    /// At completion will return a response ot type JSONResponse<T> or a StarWarsError
-    static func performRequestWith(endpoint: StarWarsEndpoint, completion: @escaping (Result<JSONResponse<T>, StarWarsError>) -> Void) {
+    func performRequestWith(endpoint: StarWarsEndpoint, completion: @escaping (Result<[Resource], StarWarsError>) -> Void) {
         let task = session.dataTask(with: endpoint.request) { (data, response, error) in
             
             DispatchQueue.main.async {
+                
                 guard let data = data else {
                     completion(.failure(StarWarsError.invalidData))
                     return
@@ -71,9 +50,18 @@ private extension StarWarsAPIClient {
                 }
                 
                 do {
-                    let jsonResponse = try self.decoder.decode(JSONResponse<T>.self, from: data)
-                    completion(.success(jsonResponse))
-                    } catch let DecodingError.dataCorrupted(context) {
+                    switch endpoint {
+                    case .people:
+                        let jsonResponse = try self.decoder.decode(JSONResponse<Character>.self, from: data)
+                         completion(.success(jsonResponse.results))
+                    case .vehicles:
+                        let jsonResponse = try self.decoder.decode(JSONResponse<Vehicle>.self, from: data)
+                         completion(.success(jsonResponse.results))
+                    case .starships:
+                        let jsonResponse = try self.decoder.decode(JSONResponse<Starship>.self, from: data)
+                         completion(.success(jsonResponse.results))
+                    }
+                } catch let DecodingError.dataCorrupted(context) {
                     print(context)
                 } catch let DecodingError.keyNotFound(key, context) {
                     print("Key '\(key)' not found:", context.debugDescription)
