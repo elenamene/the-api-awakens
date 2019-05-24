@@ -26,9 +26,9 @@ extension CharacterAttributesViewModel {
 //            Attribute(name: "Gender", description: character.gender.rawValue.capitalizeFirstLetter()),
             Attribute(name: "Gender", description: "\(character.gender.capitalizeFirstLetter())"),
             Attribute(name: "Year Of Birth", description: character.yearOfBirth),
-            Attribute(name: "Vehicles", description: ""),
-            Attribute(name: "Starships", description: ""),
-            Attribute(name: "Films", description: ""),
+            Attribute(name: "Vehicles", description: character.vehicles.description),
+            Attribute(name: "Starships", description: character.starships.description),
+            Attribute(name: "Films", description: character.films.description),
         ]
     }
 }

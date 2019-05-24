@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F31765D1228B16C90056DAA7 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31765D0228B16C90056DAA7 /* JSONResponse.swift */; };
+		F31765D1228B16C90056DAA7 /* CollectionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31765D0228B16C90056DAA7 /* CollectionResults.swift */; };
 		F33D1E07227C817600840BC4 /* SearchResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33D1E06227C817600840BC4 /* SearchResultsDataSource.swift */; };
 		F33D1E21227F620B00840BC4 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33D1E20227F620B00840BC4 /* Resource.swift */; };
 		F33D1E2322804B5400840BC4 /* PickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33D1E2222804B5400840BC4 /* PickerDataSource.swift */; };
@@ -31,6 +31,7 @@
 		F3626306228823C5007A15C3 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3626305228823C5007A15C3 /* RoundButton.swift */; };
 		F362630822884491007A15C3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F362630722884491007A15C3 /* UIView.swift */; };
 		F362630E22885644007A15C3 /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F362630D22885644007A15C3 /* SearchResultsCell.swift */; };
+		F376AE8A22916EB000E9C6E3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376AE8922916EB000E9C6E3 /* UIViewController.swift */; };
 		F3930A78227B480E00598F59 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3930A77227B480E00598F59 /* SearchResultsController.swift */; };
 		F3E0864C2283685900EBDD77 /* CharacterAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864B2283685900EBDD77 /* CharacterAttributesViewModel.swift */; };
 		F3E0864E22836EAE00EBDD77 /* VehicleAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864D22836EAE00EBDD77 /* VehicleAttributesViewModel.swift */; };
@@ -44,7 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F31765D0228B16C90056DAA7 /* JSONResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
+		F31765D0228B16C90056DAA7 /* CollectionResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionResults.swift; sourceTree = "<group>"; };
 		F33D1E06227C817600840BC4 /* SearchResultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDataSource.swift; sourceTree = "<group>"; };
 		F33D1E20227F620B00840BC4 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		F33D1E2222804B5400840BC4 /* PickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataSource.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		F3626305228823C5007A15C3 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		F362630722884491007A15C3 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F362630D22885644007A15C3 /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
+		F376AE8922916EB000E9C6E3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		F3930A77227B480E00598F59 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		F3E0864B2283685900EBDD77 /* CharacterAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAttributesViewModel.swift; sourceTree = "<group>"; };
 		F3E0864D22836EAE00EBDD77 /* VehicleAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAttributesViewModel.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				F3E0865222858FEF00EBDD77 /* String.swift */,
 				F362630722884491007A15C3 /* UIView.swift */,
 				F3E212A222895BB900F20676 /* UISearchBar.swift */,
+				F376AE8922916EB000E9C6E3 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -218,7 +221,7 @@
 				F3E212A82289B7FB00F20676 /* StarWarsEndpoint.swift */,
 				F3E212A52289B5CD00F20676 /* StarWarsAPIClient.swift */,
 				F3E212AE2289C91900F20676 /* StarWarsError.swift */,
-				F31765D0228B16C90056DAA7 /* JSONResponse.swift */,
+				F31765D0228B16C90056DAA7 /* CollectionResults.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				F3551B84227B095500218E72 /* Starship.swift in Sources */,
 				F3E086552285941F00EBDD77 /* AttributeViewModel.swift in Sources */,
 				F3551B7C227AD83200218E72 /* Color.swift in Sources */,
+				F376AE8A22916EB000E9C6E3 /* UIViewController.swift in Sources */,
 				F3551B562279F9F400218E72 /* AppDelegate.swift in Sources */,
 				F3E212AF2289C91900F20676 /* StarWarsError.swift in Sources */,
 				F3626306228823C5007A15C3 /* RoundButton.swift in Sources */,
@@ -323,7 +327,7 @@
 				F3551B82227B092500218E72 /* Vehicle.swift in Sources */,
 				F3551B78227A026C00218E72 /* Category.swift in Sources */,
 				F3551B88227B0D3E00218E72 /* Transport.swift in Sources */,
-				F31765D1228B16C90056DAA7 /* JSONResponse.swift in Sources */,
+				F31765D1228B16C90056DAA7 /* CollectionResults.swift in Sources */,
 				F33D1E21227F620B00840BC4 /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
