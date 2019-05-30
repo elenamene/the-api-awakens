@@ -98,16 +98,11 @@ private extension StarWarsAPIClient {
         }
     }
     
-    /// Generic method to perform a generic data request
+    /// Generic method to perform a data request
     static func performRequest(with request: URLRequest, completion: @escaping (Result<Data, StarWarsError>) -> Void) {
         let task = session.dataTask(with: request) { (data, response, error) in
             
             DispatchQueue.main.async {
-                guard let data = data else {
-                    completion(.failure(StarWarsError.invalidData))
-                    return
-                }
-                
                 guard let httpResponse = response as? HTTPURLResponse else {
                     completion(.failure(StarWarsError.requestFailed(description: error?.localizedDescription ?? "No description")))
                     return
@@ -115,6 +110,11 @@ private extension StarWarsAPIClient {
                 
                 guard httpResponse.statusCode == 200  else {
                     completion(.failure(StarWarsError.responseUnsuccessful(description: "\(httpResponse.statusCode)")))
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(.failure(StarWarsError.invalidData))
                     return
                 }
                 

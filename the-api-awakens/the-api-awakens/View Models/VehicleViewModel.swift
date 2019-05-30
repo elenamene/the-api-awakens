@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct VehicleAttributesViewModel: AttributesViewModel {
-    var attributes: [Attribute]
+struct VehicleViewModel: AttributesTableViewModel {
+    var attributes: [AttributeViewModel]
 }
 
-extension VehicleAttributesViewModel {
+extension VehicleViewModel {
     init(vehicle: Vehicle) {
         attributes = [
             Attribute(name: "Model", description: vehicle.model.capitalizeFirstLetter()),
             Attribute(name: "Manufacturer", description: vehicle.manufacturer.capitalizeFirstLetter()),
-            Attribute(name: "Cost", description: "\(vehicle.cost) Galactic Credits"),
-            Attribute(name: "Length", description: "\(vehicle.length) m"),
+            CurrencyConvertibleAttribute(value: vehicle.cost),
+            MeasurableAttribute(name: "Length", value: vehicle.length, units: [UnitLength.meters, UnitLength.feet]),
             Attribute(name: "Speed", description: "\(vehicle.maxAtmospheringSpeed) atmosphere"),
             Attribute(name: "Crew", description: String(vehicle.crew)),
             Attribute(name: "Passengers", description: String(vehicle.passengers)),

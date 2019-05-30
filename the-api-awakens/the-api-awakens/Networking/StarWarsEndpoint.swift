@@ -33,7 +33,7 @@ extension Endpoint {
     }
 }
 
-// Star Wars Endpoint
+// MARK: - Star Wars Endpoint
 
 enum StarWarsEndpoint: String {
     case people

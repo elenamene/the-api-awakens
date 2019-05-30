@@ -9,7 +9,7 @@
 import UIKit
 
 class CategoryListController: UITableViewController {
-    let dataSource = CategoryListDataSource(categories: [.people, .starships, .vehicles])
+    let dataSource = CategoriesDataSource(categories: [.people, .starships, .vehicles])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +73,9 @@ extension CategoryListController {
             
             switch category {
             case .people:
+                
+                // TODO: - ADD [WEAK SELF] TO CLOSURE ????????
+                
                 StarWarsAPIClient<Character>.fetchAll { (result) in
                     switch result {
                     case .success(let resources):

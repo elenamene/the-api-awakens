@@ -45,7 +45,7 @@ class ResourceDetailController: UITableViewController {
         return pickerView
     }()
     
-    lazy var dataSource = ResourceDetailDataSource(resource: selectedResource)
+    lazy var dataSource = AttributesDataSource(from: selectedResource)
     
     // MARK: - Outlets
     
@@ -67,7 +67,7 @@ class ResourceDetailController: UITableViewController {
         resourceNameTextField.inputView = pickerView
         resourceNameTextField.text = selectedResource.name
         
-        // Dismiss Picker
+        // Tap Gesture to Dismiss Picker
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTapGesture(recognizer:)))
         view.addGestureRecognizer(tapGesture)
     }
@@ -108,8 +108,6 @@ extension ResourceDetailController: UIPickerViewDelegate {
 // MARK: - TextField Delegate
 
 extension ResourceDetailController: UITextFieldDelegate {
-    // TODO: Disable copy and paste in textField ???
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.dropShadow(color: .white)
         iconButton.isSelected = true
@@ -119,4 +117,39 @@ extension ResourceDetailController: UITextFieldDelegate {
         textField.dropShadow(color: .clear, opacity: 0, radius: 0)
         iconButton.isSelected = false
     }
+}
+
+// MARK: - AttributeCell Delegate
+
+extension ResourceDetailController: AttributeCellDelegate {
+    func didTapOnCurrencyConverter(cell: AttributeCell, viewModel: CurrencyConvertibleAttribute) {
+        let alert = UIAlertController(title: "Enter Exchange Rate", message: nil, preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.placeholder = "0.62"
+            textField.keyboardType = .numbersAndPunctuation
+        }
+        
+        let convertAction = UIAlertAction(title: "Convert", style: .default) { [weak alert] (_)  in
+            if let exchangeRate = alert?.textFields?.first?.text, let exchangeRateNumber = Double(exchangeRate), exchangeRateNumber > 0 {
+                print("Exchange rate: \(exchangeRate)")
+                // change cell description text
+                if let viewModel = cell.viewModel as? CurrencyConvertibleAttribute {
+                    cell.descriptionLabel.text = viewModel.convertedValue(with: exchangeRateNumber)
+                }
+                
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                alert?.message = "Please enter a valid number."
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(convertAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }

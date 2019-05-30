@@ -8,19 +8,19 @@
 
 import UIKit
 
-class ResourceDetailDataSource: NSObject, UITableViewDataSource {
+class AttributesDataSource: NSObject, UITableViewDataSource {
     
     private var resource: Resource
     
-    private var viewModel: AttributesViewModel {
+    private var tableViewViewModel: AttributesTableViewModel {
         switch resource.category {
-        case .people: return CharacterAttributesViewModel(character: resource as! Character)
-        case .starships: return StarshipAttributesViewModel(starship: resource as! Starship)
-        case .vehicles: return VehicleAttributesViewModel(vehicle: resource as! Vehicle)
+        case .people: return CharacterViewModel(character: resource as! Character)
+        case .starships: return StarshipViewModel(starship: resource as! Starship)
+        case .vehicles: return VehicleViewModel(vehicle: resource as! Vehicle)
         }
     }
     
-    init(resource: Resource) {
+    init(from resource: Resource) {
         self.resource = resource
         super.init()
     }
@@ -32,21 +32,21 @@ class ResourceDetailDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.attributes.count
+        return tableViewViewModel.attributes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AttributeCell", for: indexPath)
-        let attribute = viewModel.attributes[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AttributeCell", for: indexPath) as! AttributeCell
+        let attributeViewModel = tableViewViewModel.attributes[indexPath.row]
         
-        cell.textLabel?.text = attribute.name
-        cell.detailTextLabel?.text = attribute.description
+        cell.viewModel = attributeViewModel
+//        cell.delegate = ???
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Informations"
+        return "Info"
     }
     
     // MARK: - Helper Methods

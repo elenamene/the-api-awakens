@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -86,12 +87,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1058823529" green="0.12549019610000001" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.14117647059999999" green="0.1647058824" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="WQa-jX-8w7">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="WQa-jX-8w7">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33V-iv-UhS" customClass="RoundButton" customModule="the_api_awakens" customModuleProvider="target">
-                                    <rect key="frame" x="155.66666666666666" y="-56" width="64" height="64"/>
+                                    <rect key="frame" x="155.66666666666666" y="32" width="64" height="64"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="kdi-EM-N2F"/>
@@ -104,7 +105,7 @@
                                     </connections>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Resource Name" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="GDo-oZ-ZzI">
-                                    <rect key="frame" x="16" y="24" width="343" height="28"/>
+                                    <rect key="frame" x="16" y="112" width="343" height="28"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
@@ -124,30 +125,66 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AttributeCell" textLabel="rvj-j1-igJ" detailTextLabel="pEb-ek-wUc" style="IBUITableViewCellStyleValue1" id="xCU-70-gKT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AttributeCell" id="xCU-70-gKT" customClass="AttributeCell" customModule="the_api_awakens" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="195.33333333333334" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xCU-70-gKT" id="1Wj-OU-Et0">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rvj-j1-igJ">
-                                            <rect key="frame" x="16" y="12.000000000000002" width="29.666666666666668" height="20.666666666666668"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" text="Starships" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHc-9j-fI6">
+                                            <rect key="frame" x="16" y="12.333333333333334" width="100" height="19.333333333333329"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="665-4L-F5z"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="pEb-ek-wUc">
-                                            <rect key="frame" x="319" y="12.000000000000002" width="40" height="20.666666666666668"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
-                                            <color key="textColor" red="0.55680066350000001" green="0.80080568789999995" blue="0.98041623830000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-4i-mIN">
+                                            <rect key="frame" x="124" y="12.333333333333334" width="235" height="19.333333333333329"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Executor-class star dreadnought" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CG-Ze-5ig">
+                                                    <rect key="frame" x="0.0" y="0.0" width="235" height="19.333333333333332"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" red="0.55680066350000001" green="0.80080568789999995" blue="0.98041623830000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VVv-cE-D03">
+                                                    <rect key="frame" x="0.0" y="0.66666666666666607" width="0.0" height="19"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="UUI-Be-WYF"/>
+                                                    </constraints>
+                                                    <segments>
+                                                        <segment title="Metric"/>
+                                                        <segment title="British"/>
+                                                    </segments>
+                                                    <color key="tintColor" red="0.89019607840000003" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <connections>
+                                                        <action selector="unitsChanged:" destination="xCU-70-gKT" eventType="valueChanged" id="x0i-Tb-oaw"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="tik-NX-pa0"/>
+                                            </constraints>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="NHc-9j-fI6" firstAttribute="leading" secondItem="1Wj-OU-Et0" secondAttribute="leading" constant="16" id="3dV-H4-eS6"/>
+                                        <constraint firstItem="NHc-9j-fI6" firstAttribute="top" secondItem="8CG-Ze-5ig" secondAttribute="top" id="9Kh-aI-ylq"/>
+                                        <constraint firstItem="rgd-4i-mIN" firstAttribute="leading" secondItem="NHc-9j-fI6" secondAttribute="trailing" constant="8" id="At3-ac-tR0"/>
+                                        <constraint firstAttribute="trailing" secondItem="rgd-4i-mIN" secondAttribute="trailing" constant="16" id="BAm-dW-cKg"/>
+                                        <constraint firstItem="rgd-4i-mIN" firstAttribute="centerY" secondItem="1Wj-OU-Et0" secondAttribute="centerY" id="NLr-Qd-eiJ"/>
+                                        <constraint firstItem="NHc-9j-fI6" firstAttribute="height" secondItem="8CG-Ze-5ig" secondAttribute="height" id="mbY-HA-32q"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.1058823529" green="0.12549019610000001" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="conversionControl" destination="VVv-cE-D03" id="uBB-HO-uSr"/>
+                                    <outlet property="descriptionLabel" destination="8CG-Ze-5ig" id="8y6-j2-Lbp"/>
+                                    <outlet property="nameLabel" destination="NHc-9j-fI6" id="OFB-ON-Txp"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

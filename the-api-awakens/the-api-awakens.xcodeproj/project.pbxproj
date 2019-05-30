@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F31765D1228B16C90056DAA7 /* CollectionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31765D0228B16C90056DAA7 /* CollectionResults.swift */; };
+		F323A8812299AFFC00978629 /* AttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323A8802299AFFC00978629 /* AttributeCell.swift */; };
+		F323A88322A020EF00978629 /* StringDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323A88222A020EF00978629 /* StringDescription.swift */; };
 		F33D1E07227C817600840BC4 /* SearchResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33D1E06227C817600840BC4 /* SearchResultsDataSource.swift */; };
 		F33D1E21227F620B00840BC4 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33D1E20227F620B00840BC4 /* Resource.swift */; };
 		F33D1E2322804B5400840BC4 /* PickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33D1E2222804B5400840BC4 /* PickerDataSource.swift */; };
@@ -16,8 +18,8 @@
 		F3551B602279F9F600218E72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3551B5E2279F9F600218E72 /* LaunchScreen.storyboard */; };
 		F3551B6F2279FD5300218E72 /* CategoryListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3551B6E2279FD5300218E72 /* CategoryListController.swift */; };
 		F3551B712279FD9700218E72 /* ResourceDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3551B702279FD9700218E72 /* ResourceDetailController.swift */; };
-		F3551B74227A021400218E72 /* CategoryListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3551B73227A021400218E72 /* CategoryListDataSource.swift */; };
-		F3551B76227A023D00218E72 /* ResourceDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3551B75227A023D00218E72 /* ResourceDetailDataSource.swift */; };
+		F3551B74227A021400218E72 /* CategoriesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3551B73227A021400218E72 /* CategoriesDataSource.swift */; };
+		F3551B76227A023D00218E72 /* AttributesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3551B75227A023D00218E72 /* AttributesDataSource.swift */; };
 		F3551B78227A026C00218E72 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3551B77227A026C00218E72 /* Category.swift */; };
 		F3551B7A227A05C100218E72 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3551B79227A05C100218E72 /* CategoryCell.swift */; };
 		F3551B7C227AD83200218E72 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3551B7B227AD83200218E72 /* Color.swift */; };
@@ -33,11 +35,11 @@
 		F362630E22885644007A15C3 /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F362630D22885644007A15C3 /* SearchResultsCell.swift */; };
 		F376AE8A22916EB000E9C6E3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376AE8922916EB000E9C6E3 /* UIViewController.swift */; };
 		F3930A78227B480E00598F59 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3930A77227B480E00598F59 /* SearchResultsController.swift */; };
-		F3E0864C2283685900EBDD77 /* CharacterAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864B2283685900EBDD77 /* CharacterAttributesViewModel.swift */; };
-		F3E0864E22836EAE00EBDD77 /* VehicleAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864D22836EAE00EBDD77 /* VehicleAttributesViewModel.swift */; };
-		F3E08650228373FD00EBDD77 /* StarshipAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864F228373FD00EBDD77 /* StarshipAttributesViewModel.swift */; };
+		F3E0864C2283685900EBDD77 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864B2283685900EBDD77 /* CharacterViewModel.swift */; };
+		F3E0864E22836EAE00EBDD77 /* VehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864D22836EAE00EBDD77 /* VehicleViewModel.swift */; };
+		F3E08650228373FD00EBDD77 /* StarshipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864F228373FD00EBDD77 /* StarshipViewModel.swift */; };
 		F3E0865322858FEF00EBDD77 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0865222858FEF00EBDD77 /* String.swift */; };
-		F3E086552285941F00EBDD77 /* AttributeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E086542285941F00EBDD77 /* AttributeViewModel.swift */; };
+		F3E086552285941F00EBDD77 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E086542285941F00EBDD77 /* Attribute.swift */; };
 		F3E212A322895BB900F20676 /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E212A222895BB900F20676 /* UISearchBar.swift */; };
 		F3E212A62289B5CD00F20676 /* StarWarsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E212A52289B5CD00F20676 /* StarWarsAPIClient.swift */; };
 		F3E212A92289B7FB00F20676 /* StarWarsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E212A82289B7FB00F20676 /* StarWarsEndpoint.swift */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		F31765D0228B16C90056DAA7 /* CollectionResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionResults.swift; sourceTree = "<group>"; };
+		F323A8802299AFFC00978629 /* AttributeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeCell.swift; sourceTree = "<group>"; };
+		F323A88222A020EF00978629 /* StringDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringDescription.swift; sourceTree = "<group>"; };
 		F33D1E06227C817600840BC4 /* SearchResultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDataSource.swift; sourceTree = "<group>"; };
 		F33D1E20227F620B00840BC4 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		F33D1E2222804B5400840BC4 /* PickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataSource.swift; sourceTree = "<group>"; };
@@ -56,8 +60,8 @@
 		F3551B612279F9F600218E72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3551B6E2279FD5300218E72 /* CategoryListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListController.swift; sourceTree = "<group>"; };
 		F3551B702279FD9700218E72 /* ResourceDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceDetailController.swift; sourceTree = "<group>"; };
-		F3551B73227A021400218E72 /* CategoryListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListDataSource.swift; sourceTree = "<group>"; };
-		F3551B75227A023D00218E72 /* ResourceDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceDetailDataSource.swift; sourceTree = "<group>"; };
+		F3551B73227A021400218E72 /* CategoriesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDataSource.swift; sourceTree = "<group>"; };
+		F3551B75227A023D00218E72 /* AttributesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesDataSource.swift; sourceTree = "<group>"; };
 		F3551B77227A026C00218E72 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F3551B79227A05C100218E72 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		F3551B7B227AD83200218E72 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -73,11 +77,11 @@
 		F362630D22885644007A15C3 /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
 		F376AE8922916EB000E9C6E3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		F3930A77227B480E00598F59 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
-		F3E0864B2283685900EBDD77 /* CharacterAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAttributesViewModel.swift; sourceTree = "<group>"; };
-		F3E0864D22836EAE00EBDD77 /* VehicleAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAttributesViewModel.swift; sourceTree = "<group>"; };
-		F3E0864F228373FD00EBDD77 /* StarshipAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipAttributesViewModel.swift; sourceTree = "<group>"; };
+		F3E0864B2283685900EBDD77 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
+		F3E0864D22836EAE00EBDD77 /* VehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleViewModel.swift; sourceTree = "<group>"; };
+		F3E0864F228373FD00EBDD77 /* StarshipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipViewModel.swift; sourceTree = "<group>"; };
 		F3E0865222858FEF00EBDD77 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		F3E086542285941F00EBDD77 /* AttributeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeViewModel.swift; sourceTree = "<group>"; };
+		F3E086542285941F00EBDD77 /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		F3E212A222895BB900F20676 /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
 		F3E212A52289B5CD00F20676 /* StarWarsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAPIClient.swift; sourceTree = "<group>"; };
 		F3E212A82289B7FB00F20676 /* StarWarsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsEndpoint.swift; sourceTree = "<group>"; };
@@ -164,8 +168,8 @@
 		F3551B72227A01DD00218E72 /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
-				F3551B73227A021400218E72 /* CategoryListDataSource.swift */,
-				F3551B75227A023D00218E72 /* ResourceDetailDataSource.swift */,
+				F3551B73227A021400218E72 /* CategoriesDataSource.swift */,
+				F3551B75227A023D00218E72 /* AttributesDataSource.swift */,
 				F33D1E2222804B5400840BC4 /* PickerDataSource.swift */,
 				F33D1E06227C817600840BC4 /* SearchResultsDataSource.swift */,
 			);
@@ -189,6 +193,7 @@
 			children = (
 				F3551B79227A05C100218E72 /* CategoryCell.swift */,
 				F362630D22885644007A15C3 /* SearchResultsCell.swift */,
+				F323A8802299AFFC00978629 /* AttributeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -196,10 +201,10 @@
 		F3E0864A228367C600EBDD77 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				F3E086542285941F00EBDD77 /* AttributeViewModel.swift */,
-				F3E0864B2283685900EBDD77 /* CharacterAttributesViewModel.swift */,
-				F3E0864D22836EAE00EBDD77 /* VehicleAttributesViewModel.swift */,
-				F3E0864F228373FD00EBDD77 /* StarshipAttributesViewModel.swift */,
+				F3E086542285941F00EBDD77 /* Attribute.swift */,
+				F3E0864B2283685900EBDD77 /* CharacterViewModel.swift */,
+				F3E0864D22836EAE00EBDD77 /* VehicleViewModel.swift */,
+				F3E0864F228373FD00EBDD77 /* StarshipViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				F362630722884491007A15C3 /* UIView.swift */,
 				F3E212A222895BB900F20676 /* UISearchBar.swift */,
 				F376AE8922916EB000E9C6E3 /* UIViewController.swift */,
+				F323A88222A020EF00978629 /* StringDescription.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -297,19 +303,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F323A88322A020EF00978629 /* StringDescription.swift in Sources */,
 				F3551B80227B07C900218E72 /* Character.swift in Sources */,
 				F3E212A92289B7FB00F20676 /* StarWarsEndpoint.swift in Sources */,
-				F3E08650228373FD00EBDD77 /* StarshipAttributesViewModel.swift in Sources */,
+				F3E08650228373FD00EBDD77 /* StarshipViewModel.swift in Sources */,
 				F3551B8C227B260200218E72 /* Stub.swift in Sources */,
 				F3551B86227B09E800218E72 /* Film.swift in Sources */,
 				F3E212A62289B5CD00F20676 /* StarWarsAPIClient.swift in Sources */,
 				F362630E22885644007A15C3 /* SearchResultsCell.swift in Sources */,
 				F3E212A322895BB900F20676 /* UISearchBar.swift in Sources */,
 				F33D1E2322804B5400840BC4 /* PickerDataSource.swift in Sources */,
-				F3551B74227A021400218E72 /* CategoryListDataSource.swift in Sources */,
-				F3E0864E22836EAE00EBDD77 /* VehicleAttributesViewModel.swift in Sources */,
+				F3551B74227A021400218E72 /* CategoriesDataSource.swift in Sources */,
+				F3E0864E22836EAE00EBDD77 /* VehicleViewModel.swift in Sources */,
 				F3551B84227B095500218E72 /* Starship.swift in Sources */,
-				F3E086552285941F00EBDD77 /* AttributeViewModel.swift in Sources */,
+				F3E086552285941F00EBDD77 /* Attribute.swift in Sources */,
+				F323A8812299AFFC00978629 /* AttributeCell.swift in Sources */,
 				F3551B7C227AD83200218E72 /* Color.swift in Sources */,
 				F376AE8A22916EB000E9C6E3 /* UIViewController.swift in Sources */,
 				F3551B562279F9F400218E72 /* AppDelegate.swift in Sources */,
@@ -318,11 +326,11 @@
 				F3930A78227B480E00598F59 /* SearchResultsController.swift in Sources */,
 				F3551B6F2279FD5300218E72 /* CategoryListController.swift in Sources */,
 				F3E0865322858FEF00EBDD77 /* String.swift in Sources */,
-				F3E0864C2283685900EBDD77 /* CharacterAttributesViewModel.swift in Sources */,
+				F3E0864C2283685900EBDD77 /* CharacterViewModel.swift in Sources */,
 				F3551B7A227A05C100218E72 /* CategoryCell.swift in Sources */,
 				F3551B712279FD9700218E72 /* ResourceDetailController.swift in Sources */,
 				F33D1E07227C817600840BC4 /* SearchResultsDataSource.swift in Sources */,
-				F3551B76227A023D00218E72 /* ResourceDetailDataSource.swift in Sources */,
+				F3551B76227A023D00218E72 /* AttributesDataSource.swift in Sources */,
 				F362630822884491007A15C3 /* UIView.swift in Sources */,
 				F3551B82227B092500218E72 /* Vehicle.swift in Sources */,
 				F3551B78227A026C00218E72 /* Category.swift in Sources */,
