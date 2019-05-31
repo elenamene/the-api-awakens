@@ -107,6 +107,5 @@ extension CategoryListController {
                 }
             }
         }
-        
     }
 }

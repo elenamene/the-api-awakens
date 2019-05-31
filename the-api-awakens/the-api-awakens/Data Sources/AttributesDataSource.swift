@@ -40,8 +40,7 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
         let attributeViewModel = tableViewViewModel.attributes[indexPath.row]
         
         cell.viewModel = attributeViewModel
-//        cell.delegate = ???
-        
+
         return cell
     }
     

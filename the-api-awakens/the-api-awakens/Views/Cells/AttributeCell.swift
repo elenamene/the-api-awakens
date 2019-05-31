@@ -36,6 +36,8 @@ class AttributeCell: UITableViewCell {
     
     weak var delegate: AttributeCellDelegate?
     
+    var alertHandler: ((UIAlertAction) -> Void?)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -56,6 +58,7 @@ class AttributeCell: UITableViewCell {
     @IBAction func unitsChanged(_ sender: UISegmentedControl) {
         if let viewModel = viewModel as? CurrencyConvertibleAttribute {
             // alert controller to get exchange rate
+            print("tapped on currency converter")
             delegate?.didTapOnCurrencyConverter(cell: self, viewModel: viewModel)
         } else if let viewModel = viewModel as? MeasurableAttribute {
             switch sender.selectedSegmentIndex {

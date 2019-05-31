@@ -72,7 +72,7 @@ class ResourceDetailController: UITableViewController {
         view.addGestureRecognizer(tapGesture)
     }
 
-    // MARK: - Dismiss Picker
+    // MARK: - Gesture
     
     // Dismiss date picker when tapping outside the view
     @objc func backgroundTapGesture(recognizer: UITapGestureRecognizer) {
@@ -86,6 +86,16 @@ class ResourceDetailController: UITableViewController {
     @IBAction func selectResource(_ sender: RoundButton) {
         resourceNameTextField.becomeFirstResponder()
         sender.isSelected = true
+    }
+}
+
+// MARK: - TableView Delegate
+
+extension ResourceDetailController {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? AttributeCell {
+            cell.delegate = self
+        }
     }
 }
 
@@ -123,6 +133,7 @@ extension ResourceDetailController: UITextFieldDelegate {
 
 extension ResourceDetailController: AttributeCellDelegate {
     func didTapOnCurrencyConverter(cell: AttributeCell, viewModel: CurrencyConvertibleAttribute) {
+        print("AttributeCellDelegate called")
         let alert = UIAlertController(title: "Enter Exchange Rate", message: nil, preferredStyle: .alert)
         
         alert.addTextField { textField in

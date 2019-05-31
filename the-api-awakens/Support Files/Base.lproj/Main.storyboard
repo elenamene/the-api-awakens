@@ -188,7 +188,7 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="delegate" destination="Vvh-Dg-g01" id="cM2-Vy-I3y"/>
+                            <outlet property="delegate" destination="Vvh-Dg-g01" id="jdk-Ap-fHx"/>
                         </connections>
                     </tableView>
                     <connections>
