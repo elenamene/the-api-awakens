@@ -18,7 +18,7 @@ extension VehicleViewModel {
             Attribute(name: "Model", description: vehicle.model.capitalizeFirstLetter()),
             Attribute(name: "Manufacturer", description: vehicle.manufacturer.capitalizeFirstLetter()),
             CurrencyConvertibleAttribute(value: vehicle.cost),
-            MeasurableAttribute(name: "Length", value: vehicle.length, units: [UnitLength.meters, UnitLength.feet]),
+            MeasureConvertibleAttribute(name: "Length", value: vehicle.length, units: [UnitLength.meters, UnitLength.feet]),
             Attribute(name: "Speed", description: "\(vehicle.maxAtmospheringSpeed) atmosphere"),
             Attribute(name: "Crew", description: String(vehicle.crew)),
             Attribute(name: "Passengers", description: String(vehicle.passengers)),

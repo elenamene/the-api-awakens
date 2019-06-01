@@ -8,18 +8,15 @@
 
 import UIKit
 
-
-protocol AttributeCellDelegate: class {
-    // present alert to request exchange rate
-    // update cell.descriptionLabel with new value of the ViewModel in USD
-    func didTapOnCurrencyConverter(cell: AttributeCell, viewModel: CurrencyConvertibleAttribute)
-}
-
 class AttributeCell: UITableViewCell {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var conversionControl: UISegmentedControl!
+    
+    // MARK: - Properties
     
     var viewModel: AttributeViewModel? {
         didSet {
@@ -27,40 +24,53 @@ class AttributeCell: UITableViewCell {
                 nameLabel.text = viewModel.name
                 descriptionLabel.text = viewModel.description
                 
-                if let viewModel = viewModel as? Convertible {
-                    setupConversionControl(with: viewModel.conversionControlLabels)
+                if viewModel is CurrencyConvertibleAttribute && viewModel.description != "Unknown" {
+                    setupConversionControl(with: #selector(currencyChanged))
+                } else if viewModel is MeasureConvertibleAttribute && viewModel.description != "Unknown" {
+                    setupConversionControl(with: #selector(unitChanged))
+                } else {
+                    conversionControl.isHidden = true
                 }
             }
         }
     }
     
-    weak var delegate: AttributeCellDelegate?
+    var showExchangeRateAlert: (() -> Void)?
     
-    var alertHandler: ((UIAlertAction) -> Void?)?
+    // MARK: - Cell Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
     }
     
     // MARK: - Helpers
     
-    func setupConversionControl(with labels: [String]) {
-        conversionControl.isHidden = false
-        conversionControl.apportionsSegmentWidthsByContent = true
-        conversionControl.setTitle(labels[0], forSegmentAt: 0)
-        conversionControl.setTitle(labels[1], forSegmentAt: 1)
-        conversionControl.selectedSegmentIndex = 0
+    func setupConversionControl(with selector: Selector) {
+        if let viewModel = viewModel as? Convertible, let labels = viewModel.conversionControlLabels {
+            conversionControl.setTitle(labels[0], forSegmentAt: 0)
+            conversionControl.setTitle(labels[1], forSegmentAt: 1)
+            conversionControl.apportionsSegmentWidthsByContent = true
+            conversionControl.addTarget(self, action: selector, for: .valueChanged)
+            conversionControl.isHidden = false
+            conversionControl.selectedSegmentIndex = 0
+        }
     }
     
     // MARK: - Actions
     
-    @IBAction func unitsChanged(_ sender: UISegmentedControl) {
+    @objc func currencyChanged(_ sender: UISegmentedControl) {
         if let viewModel = viewModel as? CurrencyConvertibleAttribute {
-            // alert controller to get exchange rate
-            print("tapped on currency converter")
-            delegate?.didTapOnCurrencyConverter(cell: self, viewModel: viewModel)
-        } else if let viewModel = viewModel as? MeasurableAttribute {
+            switch sender.selectedSegmentIndex {
+            case 0: descriptionLabel.text = viewModel.description
+            case 1: showExchangeRateAlert?()
+            default: break
+            }
+        }
+    }
+    
+    @objc func unitChanged(_ sender: UISegmentedControl) {
+        if let viewModel = viewModel as? MeasureConvertibleAttribute {
             switch sender.selectedSegmentIndex {
             case 0: descriptionLabel.text = viewModel.description
             case 1: descriptionLabel.text = viewModel.convertedDescription

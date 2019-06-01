@@ -18,7 +18,7 @@ extension StarshipViewModel {
             Attribute(name: "Model", description: starship.model.capitalizeFirstLetter()),
             Attribute(name: "Manufacturer", description: starship.manufacturer.capitalizeFirstLetter()),
             CurrencyConvertibleAttribute(value: starship.cost),
-            MeasurableAttribute(name: "Length", value: starship.length, units: [UnitLength.meters, UnitLength.feet]),
+            MeasureConvertibleAttribute(name: "Length", value: starship.length, units: [UnitLength.meters, UnitLength.feet]),
             Attribute(name: "Speed", description: "\(starship.maxAtmospheringSpeed) atmosphere"),
             Attribute(name: "Crew", description: String(starship.crew)),
             Attribute(name: "Passengers", description: String(starship.passengers)),

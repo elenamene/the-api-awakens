@@ -93,8 +93,24 @@ class ResourceDetailController: UITableViewController {
 
 extension ResourceDetailController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let cell = cell as? AttributeCell {
-            cell.delegate = self
+        if let cell = cell as? AttributeCell, let viewModel = cell.viewModel as? CurrencyConvertibleAttribute { 
+            cell.showExchangeRateAlert = { [weak self] in
+                self?.showAlertWithTextInput(title: "Enter Exchange Rate",
+                                             message: "Please enter what you think is the exchange rate between Galactic Credits and US Dollars",
+                                             inputPlaceholder: "0.62",
+                                             inputKeyboardType: .numbersAndPunctuation,
+                                             actionTitle: "Convert",
+                                             cancelTitle: "Cancel",
+                                             cancelHandler: nil,
+                                             actionHandler: { (text) in
+                    if let text = text, let exchangeRate = Double(text), exchangeRate > 0 {
+                        cell.descriptionLabel.text = viewModel.convertValue(with: exchangeRate)
+                    } else {
+                        self?.showAlert(title: "Invalid Exchange Rate", message: "Exchange rate needs to be a number grater than 0.")
+                        cell.conversionControl.selectedSegmentIndex = 0
+                    }
+                })
+            }
         }
     }
 }
@@ -127,40 +143,4 @@ extension ResourceDetailController: UITextFieldDelegate {
         textField.dropShadow(color: .clear, opacity: 0, radius: 0)
         iconButton.isSelected = false
     }
-}
-
-// MARK: - AttributeCell Delegate
-
-extension ResourceDetailController: AttributeCellDelegate {
-    func didTapOnCurrencyConverter(cell: AttributeCell, viewModel: CurrencyConvertibleAttribute) {
-        print("AttributeCellDelegate called")
-        let alert = UIAlertController(title: "Enter Exchange Rate", message: nil, preferredStyle: .alert)
-        
-        alert.addTextField { textField in
-            textField.placeholder = "0.62"
-            textField.keyboardType = .numbersAndPunctuation
-        }
-        
-        let convertAction = UIAlertAction(title: "Convert", style: .default) { [weak alert] (_)  in
-            if let exchangeRate = alert?.textFields?.first?.text, let exchangeRateNumber = Double(exchangeRate), exchangeRateNumber > 0 {
-                print("Exchange rate: \(exchangeRate)")
-                // change cell description text
-                if let viewModel = cell.viewModel as? CurrencyConvertibleAttribute {
-                    cell.descriptionLabel.text = viewModel.convertedValue(with: exchangeRateNumber)
-                }
-                
-                self.dismiss(animated: true, completion: nil)
-            } else {
-                alert?.message = "Please enter a valid number."
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alert.addAction(convertAction)
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-
 }

@@ -15,8 +15,8 @@ struct CharacterViewModel: AttributesTableViewModel {
 extension CharacterViewModel {
     init(character: Character) {
         attributes = [
-            MeasurableAttribute(name: "Height", value: character.height, units: [UnitLength.centimeters, UnitLength.inches]),
-            MeasurableAttribute(name: "Mass", value: character.mass, units: [UnitMass.kilograms, UnitMass.pounds]),
+            MeasureConvertibleAttribute(name: "Height", value: character.height, units: [UnitLength.centimeters, UnitLength.inches]),
+            MeasureConvertibleAttribute(name: "Mass", value: character.mass, units: [UnitMass.kilograms, UnitMass.pounds]),
             Attribute(name: "Hair Color", description: character.hairColor.capitalizeFirstLetter()),
             Attribute(name: "Skin Color", description: character.skinColor.capitalizeFirstLetter()),
             Attribute(name: "Eye Color", description: character.eyeColor.capitalizeFirstLetter()),

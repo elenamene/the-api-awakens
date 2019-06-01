@@ -16,7 +16,7 @@ protocol AttributeViewModel {
 }
 
 protocol Convertible {
-    var conversionControlLabels: [String] { get }
+    var conversionControlLabels: [String]? { get }
 }
 
 // MARK: - View Models
@@ -28,18 +28,18 @@ struct Attribute: AttributeViewModel {
 }
 
 /// View Model used to configure an AttributeCell that supports measure conversion
-struct MeasurableAttribute: AttributeViewModel, Convertible {
+struct MeasureConvertibleAttribute: AttributeViewModel, Convertible {
     var name: String
     var description: String
-    var convertedDescription: String
-    var conversionControlLabels: [String]
+    var convertedDescription: String?
+    var conversionControlLabels: [String]?
 
     init(name: String, value: String, units: [Dimension]) {
         self.name = name
         
         guard let numberValue = Double(value) else {
-            print("Cannot convert value: \(value) into a Measurement")
-            fatalError()
+            self.description = "Unknown"
+            return
         }
         
         let measure = Measurement(value: numberValue, unit: units[0])
@@ -57,15 +57,18 @@ struct CurrencyConvertibleAttribute: AttributeViewModel, Convertible {
     
     var name: String
     var description: String
-    var conversionControlLabels: [String]
+    var conversionControlLabels: [String]?
     
-    init(name: String = "Cost", value: String, currencies: [String] = ["G Credit", "USD"]) {
+    init(name: String = "Cost", value: String) {
         self.name = name
-        self.description = "\(value)"
-        self.conversionControlLabels = currencies
+        self.description = "\(value)".capitalizeFirstLetter()
+        
+        // Using Locale Currency
+        let localeCurrencySymbol = Locale.current.currencySymbol ?? "USD"
+        self.conversionControlLabels = ["G Credit", localeCurrencySymbol]
     }
     
-    func convertedValue(with rate: ExchangeRate) -> String? {
+    func convertValue(with rate: ExchangeRate) -> String? {
         guard let value = Double(description) else { return nil }
         let convertedValue = NSNumber(value: value * rate)
         
