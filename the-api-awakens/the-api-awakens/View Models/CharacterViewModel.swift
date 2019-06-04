@@ -14,6 +14,33 @@ struct CharacterViewModel: AttributesTableViewModel {
 
 extension CharacterViewModel {
     init(character: Character) {
+        var vehiclesDescription: String {
+            if character.vehicles.isEmpty {
+                return "\(character.name) has not piloted any vehicle."
+            } else {
+                let vehiclesArray = character.vehiclesDownloaded.map { $0.name }
+                return vehiclesArray.joined(separator: ", ")
+            }
+        }
+        
+        var starshipsDescription: String {
+            if character.starships.isEmpty {
+                return "\(character.name) has not piloted any starship."
+            } else {
+                let starshipsArray = character.starshipsDownloaded.map { $0.name }
+                return starshipsArray.joined(separator: ", ")
+            }
+        }
+        
+        var filmsDescription: String {
+            if character.films.isEmpty {
+                return "\(character.name) has not been in any film."
+            } else {
+                let filmsArray = character.filmsDownloaded.map { $0.title }
+                return filmsArray.joined(separator: ", ")
+            }
+        }
+        
         attributes = [
             MeasureConvertibleAttribute(name: "Height", value: character.height, units: [UnitLength.centimeters, UnitLength.inches]),
             MeasureConvertibleAttribute(name: "Mass", value: character.mass, units: [UnitMass.kilograms, UnitMass.pounds]),
@@ -22,9 +49,10 @@ extension CharacterViewModel {
             Attribute(name: "Eye Color", description: character.eyeColor.capitalizeFirstLetter()),
             Attribute(name: "Gender", description: "\(character.gender.capitalizeFirstLetter())"),
             Attribute(name: "Year Of Birth", description: character.yearOfBirth),
-            Attribute(name: "Vehicles", description: character.vehicles.description),
-            Attribute(name: "Starships", description: character.starships.description),
-            Attribute(name: "Films", description: character.films.description),
+            Attribute(name: "Vehicles", description: vehiclesDescription),
+            Attribute(name: "Starships", description: starshipsDescription),
+            Attribute(name: "Films", description: filmsDescription),
         ]
     }
 }
+

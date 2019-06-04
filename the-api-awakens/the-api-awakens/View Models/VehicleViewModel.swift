@@ -14,6 +14,7 @@ struct VehicleViewModel: AttributesTableViewModel {
 
 extension VehicleViewModel {
     init(vehicle: Vehicle) {
+        print("Called init with \(vehicle)")
         attributes = [
             Attribute(name: "Model", description: vehicle.model.capitalizeFirstLetter()),
             Attribute(name: "Manufacturer", description: vehicle.manufacturer.capitalizeFirstLetter()),

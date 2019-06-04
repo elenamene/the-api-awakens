@@ -17,6 +17,36 @@ class StarWarsAPIClient<T: Resource> where T: Decodable {
     private static var decoder: JSONDecoder {
         return JSONDecoder()
     }
+    
+    static func fetch(_ urls: [URL], completion: @escaping (Result<[T], StarWarsError>) -> Void) {
+        let group = DispatchGroup()
+        var resources: [T] = []
+        
+        DispatchQueue.global(qos: .background).async {
+            for url in urls {
+                group.enter()
+                print("Fetching \(url)")
+                fetch(url: url) { result in
+                    switch result {
+                    case .success(let resource):
+                        print("Fetched completed: \(resource.name), \(url)")
+                        resources.append(resource)
+                        group.leave()
+                    case .failure(let error):
+                        group.leave()
+                        completion(.failure(error))
+                    }
+                }
+            }
+            
+            group.wait()
+            
+            DispatchQueue.main.async {
+                print("Completion: downloaded \(resources.count) resoureces")
+                completion(.success(resources))
+            }
+        }
+    }
 
     /// Generic method to fetch a collection of resources of type T
     static func fetchAll(completion: @escaping (Result<[T], StarWarsError>) -> Void) {
@@ -36,19 +66,37 @@ class StarWarsAPIClient<T: Resource> where T: Decodable {
 
 private extension StarWarsAPIClient {
     
+    /// Generic method to fetch a single resources of type T
+    static func fetch(url: URL, completion: @escaping (Result<T, StarWarsError>) -> Void) {
+        let request = URLRequest(url: url)
+        
+        getResource(request: request) { result in
+            switch result {
+            case .success(let resource):
+                completion(.success(resource))
+            case.failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     /// Generic method to fetch all available pages from CollectionResults<T>
     static func fetchAllPages(from response: CollectionResults<T>, completion: @escaping (Result<[T], StarWarsError>) -> Void) {
         let group = DispatchGroup()
         var currentResponse = response
         var totalResults = response.results
-        
+   
         DispatchQueue.global().async {
             while let nextPage = currentResponse.next {
                 group.enter()
-                
-                let url = URL(string: nextPage)
-                let request = URLRequest(url: url!) // Error badURL
-                
+
+                guard let url = URL(string: nextPage) else {
+                    completion(.failure(StarWarsError.badURL))
+                    return
+                }
+
+                let request = URLRequest(url: url)
+
                 getCollection(request: request) { result in
                     print("Fetching page: \(nextPage)")
                     switch result {
@@ -61,16 +109,46 @@ private extension StarWarsAPIClient {
                         completion(.failure(error))
                     }
                 }
+
                 group.wait()
             }
             
             group.notify(queue: .main) {
+                print("Fetched all pages, results: \(totalResults.count)")
                 completion(.success(totalResults))
             }
         }
     }
     
-    /// Generic method to request a collectionResponse with an endpoint of type StarwarsEndpoint
+    /// Generic method to request a resource
+    static func getResource(request: URLRequest, completion: @escaping (Result<T, StarWarsError>) -> Void) {
+        performRequest(with: request) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let resource = try self.decoder.decode(T.self, from: data)
+                    completion(.success(resource))
+                } catch let DecodingError.dataCorrupted(context) {
+                    print(context)
+                } catch let DecodingError.keyNotFound(key, context) {
+                    print("Key '\(key)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch let DecodingError.valueNotFound(value, context) {
+                    print("Value '\(value)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch let DecodingError.typeMismatch(type, context)  {
+                    print("Type '\(type)' mismatch:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch {
+                    print("error: ", error)
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    /// Generic method to request a collectionResponse
     static func getCollection(request: URLRequest, completion: @escaping (Result<CollectionResults<T>, StarWarsError>) -> Void) {
         performRequest(with: request) { result in
             switch result {

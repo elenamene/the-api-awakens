@@ -10,8 +10,8 @@ import Foundation
 
 struct Stub {
     static var characters: [Character] {
-        let luke = Character(name: "Luke Skywalker", height: "172", mass: "77", hairColor: "blond", skinColor: "fair", eyeColor: "blue", gender: "male", yearOfBirth: "19BBY", vehicles: [], starships: [], films: [])
-        let darth = Character(name: "Darth Vader", height: "202", mass: "306", hairColor: "none", skinColor: "white", eyeColor: "yellow", gender: "male", yearOfBirth: "41.9BBY", vehicles: [], starships: [], films: [])
+        let luke = Character(name: "Luke Skywalker", height: "172", mass: "77", hairColor: "blond", skinColor: "fair", eyeColor: "blue", gender: "male", yearOfBirth: "19BBY")
+        let darth = Character(name: "Darth Vader", height: "202", mass: "306", hairColor: "none", skinColor: "white", eyeColor: "yellow", gender: "male", yearOfBirth: "41.9BBY")
        
         return [luke, darth]
     }

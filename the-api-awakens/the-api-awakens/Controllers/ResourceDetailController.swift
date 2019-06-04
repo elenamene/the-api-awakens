@@ -32,6 +32,7 @@ class ResourceDetailController: UITableViewController {
     
     var selectedResource: Resource {
         let selectedRow = pickerView.selectedRow(inComponent: 0)
+        
         return pickerDataSource.resource(at: selectedRow)
     }
     
@@ -45,7 +46,7 @@ class ResourceDetailController: UITableViewController {
         return pickerView
     }()
     
-    lazy var dataSource = AttributesDataSource(from: selectedResource)
+    lazy var dataSource = AttributesDataSource(from: selectedResource, viewController: self)
     
     // MARK: - Outlets
     
@@ -93,6 +94,7 @@ class ResourceDetailController: UITableViewController {
 
 extension ResourceDetailController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // Add alert for currency convertion if cell is CurrencyConvertibleAttribute
         if let cell = cell as? AttributeCell, let viewModel = cell.viewModel as? CurrencyConvertibleAttribute { 
             cell.showExchangeRateAlert = { [weak self] in
                 self?.showAlertWithTextInput(title: "Enter Exchange Rate",
@@ -122,11 +124,14 @@ extension ResourceDetailController: UIPickerViewDelegate {
         return pickerDataSource.resource(at: row).name
     }
     
-    // Update nameLabel and tableView text with row selected
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // Update nameLabel with row selected
         resourceNameTextField.text = selectedResource.name
+        
+        // Update tableView text with row selected
         dataSource.update(with: selectedResource)
         tableView.reloadData()
+        
         iconButton.isSelected = false
     }
 }

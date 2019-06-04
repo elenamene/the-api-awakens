@@ -74,7 +74,7 @@ extension CategoryListController {
             switch category {
             case .people:
                 
-                // TODO: - ADD [WEAK SELF] TO CLOSURE ????????
+                // TODO: - ADD [WEAK SELF] TO CLOSURE 
                 
                 StarWarsAPIClient<Character>.fetchAll { (result) in
                     switch result {

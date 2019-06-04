@@ -21,9 +21,11 @@ class AttributeCell: UITableViewCell {
     var viewModel: AttributeViewModel? {
         didSet {
             if let viewModel = viewModel {
+                // Update cell labels
                 nameLabel.text = viewModel.name
                 descriptionLabel.text = viewModel.description
                 
+                // Add Segmented Control if needed
                 if viewModel is CurrencyConvertibleAttribute && viewModel.description != "Unknown" {
                     setupConversionControl(with: #selector(currencyChanged))
                 } else if viewModel is MeasureConvertibleAttribute && viewModel.description != "Unknown" {
@@ -56,6 +58,10 @@ class AttributeCell: UITableViewCell {
             conversionControl.selectedSegmentIndex = 0
         }
     }
+    
+//    func updateDescriptionLabel(with string: String) {
+//        descriptionLabel.text = string
+//    }
     
     // MARK: - Actions
     

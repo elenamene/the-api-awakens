@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct Character: Resource, Decodable {
+enum DownloadState {
+    case notDownloaded
+    case downloaded
+    case failed
+}
+
+class Character: Resource, Decodable {
     let name: String
     let height: String
     let mass: String
@@ -20,6 +26,31 @@ struct Character: Resource, Decodable {
     var vehicles: [String] = []
     var starships: [String] = []
     var films: [String] = []
+    
+    // MARK: - Properties to fetch
+    
+    var vehiclesDownloaded = [Vehicle]()
+    var starshipsDownloaded = [Starship]()
+    var filmsDownloaded = [Film]()
+    
+    var vehiclesDownloadState = DownloadState.notDownloaded
+    var starshipsDownloadState = DownloadState.notDownloaded
+    var filmsDownloadState = DownloadState.notDownloaded
+    
+    // MARK: - Init
+    
+    init(name: String, height: String, mass: String, hairColor: String, skinColor: String, eyeColor: String, gender: String, yearOfBirth: String) {
+        self.name = name
+        self.height = height
+        self.mass = mass
+        self.hairColor = hairColor
+        self.skinColor = skinColor
+        self.eyeColor = eyeColor
+        self.gender = gender
+        self.yearOfBirth = yearOfBirth
+    }
+    
+    // MARK: - Decodable
     
     private enum CodingKeys: String, CodingKey {
         case name
@@ -45,3 +76,4 @@ extension Character {
         return .people
     }
 }
+
