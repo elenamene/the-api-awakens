@@ -43,7 +43,6 @@ class AttributeCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
     
     // MARK: - Helpers
@@ -58,10 +57,6 @@ class AttributeCell: UITableViewCell {
             conversionControl.selectedSegmentIndex = 0
         }
     }
-    
-//    func updateDescriptionLabel(with string: String) {
-//        descriptionLabel.text = string
-//    }
     
     // MARK: - Actions
     

@@ -16,6 +16,7 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
             case .people: tableViewViewModel = CharacterViewModel(character: resource as! Character)
             case .starships: tableViewViewModel = StarshipViewModel(starship: resource as! Starship)
             case .vehicles: tableViewViewModel = VehicleViewModel(vehicle: resource as! Vehicle)
+            case .films: tableViewViewModel = FilmViewModel(film: resource as! Film)
             }
         }
     }
@@ -48,8 +49,12 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
         cell.viewModel = tableViewViewModel!.attributes[indexPath.row]
         
         // Check if cell needs to download the vehicles names
-        fetchVehicleNamesFor(cell, at: indexPath)
-        fetchStarshipNamesFor(cell, at: indexPath)
+        switch cell.viewModel?.name {
+        case "Vehicles": fetchVehicleNamesFor(cell, at: indexPath)
+        case "Starships": fetchStarshipNamesFor(cell, at: indexPath)
+        case "Films": fetchFilmNamesFor(cell, at: indexPath)
+        default: break
+        }
         
         return cell
     }
@@ -65,7 +70,7 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
     }
     
     func fetchVehicleNamesFor(_ cell: AttributeCell, at indexPath: IndexPath) {
-        if cell.viewModel?.name == "Vehicles", let character = resource as? Character, character.vehiclesDownloadState == .notDownloaded {
+        if let character = resource as? Character, character.vehiclesDownloadState == .notDownloaded {
             let urls = character.vehicles.map { URL(string: $0)! }
             
             StarWarsAPIClient<Vehicle>.fetch(urls) { result in
@@ -74,6 +79,7 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
                     // Assign the vehicles back to the resource
                     character.vehiclesDownloaded = vehicles
                     character.vehiclesDownloadState = .downloaded
+                    
                     // Update cell viewModel with character
                     self.resource = character
                     cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
@@ -107,28 +113,26 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
         }
     }
     
-    
-    
-//    func fetchFilmNamesFor(_ cell: AttributeCell, at indexPath: IndexPath) {
-//        if let character = resource as? Character, character.filmsDownloadState == .notDownloaded {
-//            let urls = character.films.map { URL(string: $0)! }
-//
-//            StarWarsAPIClient<Film>.fetch(urls) { result in
-//                switch result {
-//                case .success(let starships):
-//                    // Assign the vehicles back to the resource
-//                    character.starshipsDownloaded = starships
-//                    character.starshipsDownloadState = .downloaded
-//                    // Update cell viewModel with character
-//                    self.resource = character
-//                    cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
-//                case .failure(let error):
-//                    character.starshipsDownloadState = .failed
-//                    print(error)
-//                }
-//            }
-//        }
-//    }
+    func fetchFilmNamesFor(_ cell: AttributeCell, at indexPath: IndexPath) {
+        if let character = resource as? Character, character.filmsDownloadState == .notDownloaded {
+            let urls = character.films.map { URL(string: $0)! }
+
+            StarWarsAPIClient<Film>.fetch(urls) { result in
+                switch result {
+                case .success(let films):
+                    // Assign the vehicles back to the resource
+                    character.filmsDownloaded = films
+                    character.filmsDownloadState = .downloaded
+                    // Update cell viewModel with character
+                    self.resource = character
+                    cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
+                case .failure(let error):
+                    character.filmsDownloadState = .failed
+                    print(error)
+                }
+            }
+        }
+    }
     
 
 }

@@ -39,6 +39,7 @@ enum StarWarsEndpoint: String {
     case people
     case starships
     case vehicles
+    case films
 }
 
 extension StarWarsEndpoint: Endpoint {

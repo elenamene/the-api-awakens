@@ -36,7 +36,7 @@ extension CharacterViewModel {
             if character.films.isEmpty {
                 return "\(character.name) has not been in any film."
             } else {
-                let filmsArray = character.filmsDownloaded.map { $0.title }
+                let filmsArray = character.filmsDownloaded.map { $0.name }
                 return filmsArray.joined(separator: ", ")
             }
         }

@@ -9,7 +9,7 @@
 import UIKit
 
 class CategoryListController: UITableViewController {
-    let dataSource = CategoriesDataSource(categories: [.people, .starships, .vehicles])
+    let dataSource = CategoriesDataSource(categories: [.people, .starships, .vehicles, .films])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +85,7 @@ extension CategoryListController {
                         self.showAlert(title: "Network Error", message: "\(error)")
                     }
                 }
+                
             case .starships:
                 StarWarsAPIClient<Starship>.fetchAll { (result) in
                     switch result {
@@ -95,6 +96,7 @@ extension CategoryListController {
                         self.showAlert(title: "Network Error", message: "\(error)")
                     }
                 }
+                
             case .vehicles:
                 StarWarsAPIClient<Vehicle>.fetchAll { (result) in
                     switch result {
@@ -105,7 +107,19 @@ extension CategoryListController {
                         self.showAlert(title: "Network Error", message: "\(error)")
                     }
                 }
+                
+            case .films:
+                StarWarsAPIClient<Film>.fetchAll { (result) in
+                    switch result {
+                    case .success(let resources):
+                        resourceDetailController.categoryResources = resources
+                        self.navigationController?.pushViewController(resourceDetailController, animated: true)
+                    case .failure(let error):
+                        self.showAlert(title: "Network Error", message: "\(error)")
+                    }
+                }
             }
+            
         }
     }
 }
