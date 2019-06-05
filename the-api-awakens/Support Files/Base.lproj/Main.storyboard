@@ -82,7 +82,7 @@
         <scene sceneID="356-ug-IdC">
             <objects>
                 <tableViewController storyboardIdentifier="ResourceDetail" id="Vvh-Dg-g01" customClass="ResourceDetailController" customModule="the_api_awakens" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="18" id="yfT-0z-aQE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="18" id="yfT-0z-aQE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1058823529" green="0.12549019610000001" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -132,28 +132,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" text="Starships" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHc-9j-fI6">
-                                            <rect key="frame" x="16" y="-16.333333333333332" width="100" height="76.666666666666671"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="665-4L-F5z"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-4i-mIN">
-                                            <rect key="frame" x="124" y="-16.333333333333332" width="235" height="76.666666666666671"/>
+                                            <rect key="frame" x="16" y="8" width="343" height="28"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" text="Starships" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHc-9j-fI6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="2in-zk-gaI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="1000" text="Executor-class star dreadnought, Executor-class star dreadnought" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CG-Ze-5ig">
-                                                    <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="76.666666666666671"/>
+                                                    <rect key="frame" x="98" y="0.0" width="114.33333333333331" height="28"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.55680066350000001" green="0.80080568789999995" blue="0.98041623830000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VVv-cE-D03">
-                                                    <rect key="frame" x="125.66666666666666" y="28.333333333333329" width="109.33333333333334" height="21"/>
+                                                    <rect key="frame" x="220.33333333333334" y="4" width="122.66666666666666" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="UUI-Be-WYF"/>
+                                                        <constraint firstAttribute="height" constant="20" id="X2G-RF-PTb"/>
                                                     </constraints>
                                                     <segments>
                                                         <segment title="Metric"/>
@@ -162,15 +162,19 @@
                                                     <color key="tintColor" red="0.89019607840000003" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </segmentedControl>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NHc-9j-fI6" firstAttribute="top" secondItem="rgd-4i-mIN" secondAttribute="top" id="C7l-P1-KD6"/>
+                                                <constraint firstAttribute="bottom" secondItem="8CG-Ze-5ig" secondAttribute="bottom" id="FLH-Ka-D6J"/>
+                                                <constraint firstItem="8CG-Ze-5ig" firstAttribute="top" secondItem="rgd-4i-mIN" secondAttribute="top" id="fS8-H4-lAz"/>
+                                                <constraint firstAttribute="bottom" secondItem="NHc-9j-fI6" secondAttribute="bottom" id="pey-p2-4J1"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="NHc-9j-fI6" firstAttribute="leading" secondItem="1Wj-OU-Et0" secondAttribute="leading" constant="16" id="3dV-H4-eS6"/>
-                                        <constraint firstItem="NHc-9j-fI6" firstAttribute="top" secondItem="8CG-Ze-5ig" secondAttribute="top" id="9Kh-aI-ylq"/>
-                                        <constraint firstItem="rgd-4i-mIN" firstAttribute="leading" secondItem="NHc-9j-fI6" secondAttribute="trailing" constant="8" id="At3-ac-tR0"/>
-                                        <constraint firstAttribute="trailing" secondItem="rgd-4i-mIN" secondAttribute="trailing" constant="16" id="BAm-dW-cKg"/>
-                                        <constraint firstItem="rgd-4i-mIN" firstAttribute="centerY" secondItem="1Wj-OU-Et0" secondAttribute="centerY" id="NLr-Qd-eiJ"/>
-                                        <constraint firstItem="NHc-9j-fI6" firstAttribute="height" secondItem="8CG-Ze-5ig" secondAttribute="height" id="mbY-HA-32q"/>
+                                        <constraint firstItem="rgd-4i-mIN" firstAttribute="leading" secondItem="1Wj-OU-Et0" secondAttribute="leading" constant="16" id="7Qg-iO-Oss"/>
+                                        <constraint firstAttribute="trailing" secondItem="rgd-4i-mIN" secondAttribute="trailing" constant="16" id="OAJ-ka-2t8"/>
+                                        <constraint firstAttribute="bottom" secondItem="rgd-4i-mIN" secondAttribute="bottom" constant="8" id="cPu-mH-bvW"/>
+                                        <constraint firstItem="rgd-4i-mIN" firstAttribute="top" secondItem="1Wj-OU-Et0" secondAttribute="top" constant="8" id="kHA-Yh-Kof"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.1058823529" green="0.12549019610000001" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -46,7 +46,7 @@ class ResourceDetailController: UITableViewController {
         return pickerView
     }()
     
-    lazy var dataSource = AttributesDataSource(from: selectedResource, viewController: self)
+    lazy var dataSource = AttributesDataSource(from: selectedResource, tableView: self.tableView)
     
     // MARK: - Outlets
     

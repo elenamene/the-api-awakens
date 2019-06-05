@@ -22,12 +22,11 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
     }
     
     private var tableViewViewModel: AttributesTableViewModel?
+    private let tableView: UITableView
     
-    private let viewController: ResourceDetailController
-    
-    init(from resource: Resource, viewController: ResourceDetailController) {
+    init(from resource: Resource, tableView: UITableView) {
         self.resource = resource
-        self.viewController = viewController
+        self.tableView = tableView
         
         super.init()
     }
@@ -83,6 +82,9 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
                     // Update cell viewModel with character
                     self.resource = character
                     cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
+                    
+                    // Reload cell
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 case .failure(let error):
                     character.vehiclesDownloadState = .failed
                     print(error)
@@ -98,13 +100,16 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
             StarWarsAPIClient<Starship>.fetch(urls) { result in
                 switch result {
                 case .success(let starships):
-                    print("Fetched starships: \(starships.map { $0.name })")
                     // Assign the vehicles back to the resource
                     character.starshipsDownloaded = starships
                     character.starshipsDownloadState = .downloaded
+                    
                     // Update cell viewModel with character
                     self.resource = character
                     cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
+                    
+                    // Reload cell
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 case .failure(let error):
                     character.starshipsDownloadState = .failed
                     print(error)
@@ -123,9 +128,13 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
                     // Assign the vehicles back to the resource
                     resourceToUpdate.filmsDownloaded = films
                     resourceToUpdate.filmsDownloadState = .downloaded
+                    
                     // Update cell viewModel with character
                     self.resource = resourceToUpdate as! Resource
                     cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
+                    
+                    // Reload cell
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 case .failure(let error):
                     resourceToUpdate.filmsDownloadState = .failed
                     print(error)

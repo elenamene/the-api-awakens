@@ -16,7 +16,7 @@ extension StarshipViewModel {
     init(starship: Starship) {
         var filmsDescription: String {
             if starship.films.isEmpty {
-                return "\(starship.name) has not been in any film."
+                return "\(starship.name) does not appear in any film."
             } else {
                 let filmsArray = starship.filmsDownloaded.map { $0.name }
                 print(filmsArray.joined(separator: ", "))

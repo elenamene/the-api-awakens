@@ -16,7 +16,7 @@ extension VehicleViewModel {
     init(vehicle: Vehicle) {
         var filmsDescription: String {
             if vehicle.films.isEmpty {
-                return "\(vehicle.name) has not been in any film."
+                return "\(vehicle.name) does not appear in any film."
             } else {
                 let filmsArray = vehicle.filmsDownloaded.map { $0.name }
                 return filmsArray.joined(separator: ", ")
