@@ -14,6 +14,16 @@ struct StarshipViewModel: AttributesTableViewModel {
 
 extension StarshipViewModel {
     init(starship: Starship) {
+        var filmsDescription: String {
+            if starship.films.isEmpty {
+                return "\(starship.name) has not been in any film."
+            } else {
+                let filmsArray = starship.filmsDownloaded.map { $0.name }
+                print(filmsArray.joined(separator: ", "))
+                return filmsArray.joined(separator: ", ")
+            }
+        }
+        
         attributes = [
             Attribute(name: "Model", description: starship.model.capitalizeFirstLetter()),
             Attribute(name: "Manufacturer", description: starship.manufacturer.capitalizeFirstLetter()),
@@ -25,7 +35,7 @@ extension StarshipViewModel {
             Attribute(name: "Speed", description: String(starship.mglt) + " MGLT"),
             Attribute(name: "Hyperdrive Rating", description: String(starship.hyperdriveRating)),
             Attribute(name: "Starship Class", description: starship.starshipClass.capitalizeFirstLetter()),
-            Attribute(name: "Film", description: ""),
+            Attribute(name: "Films", description: filmsDescription),
         ]
     }
 }

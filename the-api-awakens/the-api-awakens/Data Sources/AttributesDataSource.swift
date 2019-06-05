@@ -92,7 +92,7 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
     }
     
     func fetchStarshipNamesFor(_ cell: AttributeCell, at indexPath: IndexPath) {
-        if cell.viewModel?.name == "Starships", let character = resource as? Character, character.starshipsDownloadState == .notDownloaded {
+        if let character = resource as? Character, character.starshipsDownloadState == .notDownloaded {
             let urls = character.starships.map { URL(string: $0)! }
             print("Fetching \(urls.count) urls")
             StarWarsAPIClient<Starship>.fetch(urls) { result in
@@ -114,20 +114,20 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
     }
     
     func fetchFilmNamesFor(_ cell: AttributeCell, at indexPath: IndexPath) {
-        if let character = resource as? Character, character.filmsDownloadState == .notDownloaded {
-            let urls = character.films.map { URL(string: $0)! }
+        if var resourceToUpdate = resource as? FilmAppearanceTrackable, resourceToUpdate.filmsDownloadState == .notDownloaded {
+            let urls = resourceToUpdate.films.map { URL(string: $0)! }
 
             StarWarsAPIClient<Film>.fetch(urls) { result in
                 switch result {
                 case .success(let films):
                     // Assign the vehicles back to the resource
-                    character.filmsDownloaded = films
-                    character.filmsDownloadState = .downloaded
+                    resourceToUpdate.filmsDownloaded = films
+                    resourceToUpdate.filmsDownloadState = .downloaded
                     // Update cell viewModel with character
-                    self.resource = character
+                    self.resource = resourceToUpdate as! Resource
                     cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
                 case .failure(let error):
-                    character.filmsDownloadState = .failed
+                    resourceToUpdate.filmsDownloadState = .failed
                     print(error)
                 }
             }

@@ -133,7 +133,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" text="Starships" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHc-9j-fI6">
-                                            <rect key="frame" x="16" y="3" width="100" height="38.333333333333336"/>
+                                            <rect key="frame" x="16" y="-16.333333333333332" width="100" height="76.666666666666671"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="665-4L-F5z"/>
                                             </constraints>
@@ -142,16 +142,16 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-4i-mIN">
-                                            <rect key="frame" x="124" y="3" width="235" height="38.333333333333336"/>
+                                            <rect key="frame" x="124" y="-16.333333333333332" width="235" height="76.666666666666671"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Executor-class star dreadnought" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CG-Ze-5ig">
-                                                    <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="38.333333333333336"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="1000" text="Executor-class star dreadnought, Executor-class star dreadnought" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CG-Ze-5ig">
+                                                    <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="76.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.55680066350000001" green="0.80080568789999995" blue="0.98041623830000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VVv-cE-D03">
-                                                    <rect key="frame" x="125.66666666666666" y="9" width="109.33333333333334" height="21"/>
+                                                    <rect key="frame" x="125.66666666666666" y="28.333333333333329" width="109.33333333333334" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="UUI-Be-WYF"/>
                                                     </constraints>
@@ -162,9 +162,6 @@
                                                     <color key="tintColor" red="0.89019607840000003" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </segmentedControl>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="tik-NX-pa0"/>
-                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>

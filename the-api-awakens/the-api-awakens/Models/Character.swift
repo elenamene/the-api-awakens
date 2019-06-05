@@ -14,7 +14,7 @@ enum DownloadState {
     case failed
 }
 
-class Character: Resource, Decodable {
+class Character: Resource, Decodable, FilmAppearanceTrackable {
     let name: String
     let height: String
     let mass: String

@@ -93,6 +93,14 @@ class ResourceDetailController: UITableViewController {
 // MARK: - TableView Delegate
 
 extension ResourceDetailController {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Add alert for currency convertion if cell is CurrencyConvertibleAttribute
         if let cell = cell as? AttributeCell, let viewModel = cell.viewModel as? CurrencyConvertibleAttribute { 
@@ -103,7 +111,8 @@ extension ResourceDetailController {
                                              inputKeyboardType: .numbersAndPunctuation,
                                              actionTitle: "Convert",
                                              cancelTitle: "Cancel",
-                                             cancelHandler: nil,
+                                             cancelHandler: { (UIAlertAction) in
+                                                cell.conversionControl.selectedSegmentIndex = 0 },
                                              actionHandler: { (text) in
                     if let text = text, let exchangeRate = Double(text), exchangeRate > 0 {
                         cell.descriptionLabel.text = viewModel.convertValue(with: exchangeRate)

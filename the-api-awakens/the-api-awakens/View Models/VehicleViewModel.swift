@@ -14,7 +14,15 @@ struct VehicleViewModel: AttributesTableViewModel {
 
 extension VehicleViewModel {
     init(vehicle: Vehicle) {
-        print("Called init with \(vehicle)")
+        var filmsDescription: String {
+            if vehicle.films.isEmpty {
+                return "\(vehicle.name) has not been in any film."
+            } else {
+                let filmsArray = vehicle.filmsDownloaded.map { $0.name }
+                return filmsArray.joined(separator: ", ")
+            }
+        }
+        
         attributes = [
             Attribute(name: "Model", description: vehicle.model.capitalizeFirstLetter()),
             Attribute(name: "Manufacturer", description: vehicle.manufacturer.capitalizeFirstLetter()),
@@ -24,7 +32,7 @@ extension VehicleViewModel {
             Attribute(name: "Crew", description: String(vehicle.crew)),
             Attribute(name: "Passengers", description: String(vehicle.passengers)),
             Attribute(name: "Vehicle Class", description: vehicle.vehicleClass.capitalizeFirstLetter()),
-            Attribute(name: "Film", description: "")
+            Attribute(name: "Films", description: filmsDescription)
         ]
     }
 }

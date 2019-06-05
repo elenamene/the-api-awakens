@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Starship: Resource, Transport, Decodable {
+class Starship: Resource, Transport, Decodable, FilmAppearanceTrackable {
     var name: String
     var model: String
     var manufacturer: String
@@ -21,6 +21,30 @@ struct Starship: Resource, Transport, Decodable {
     let hyperdriveRating: String
     let starshipClass: String
     var films: [String] = []
+    
+    // MARK: - Properties to fetch
+    
+    var filmsDownloaded = [Film]()
+    var filmsDownloadState = DownloadState.notDownloaded
+    
+    // MARK: - Init
+    
+    init(name: String, model: String, manufacturer: String, cost: String, length: String, maxAtmospheringSpeed: String, crew: String, passengers: String, mglt: String, hyperdriveRating: String, starshipClass: String, films: [String]) {
+        self.name = name
+        self.model = model
+        self.manufacturer = manufacturer
+        self.cost = cost
+        self.length = length
+        self.maxAtmospheringSpeed = maxAtmospheringSpeed
+        self.crew = crew
+        self.passengers = passengers
+        self.mglt = mglt
+        self.hyperdriveRating = hyperdriveRating
+        self.starshipClass = starshipClass
+        self.films = films
+    }
+    
+    // MARK: - Decodable
     
     private enum CodingKeys: String, CodingKey {
         case name

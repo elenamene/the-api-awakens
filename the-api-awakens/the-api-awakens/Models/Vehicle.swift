@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Vehicle: Resource, Transport, Decodable {
+class Vehicle: Resource, Transport, Decodable, FilmAppearanceTrackable {
     var name: String
     var model: String
     var manufacturer: String
@@ -19,6 +19,28 @@ struct Vehicle: Resource, Transport, Decodable {
     var passengers: String
     let vehicleClass: String
     var films: [String] = []
+    
+    // MARK: - Properties to fetch
+    
+    var filmsDownloaded = [Film]()
+    var filmsDownloadState = DownloadState.notDownloaded
+    
+    // MARK: - Init
+    
+    init(name: String, model: String, manufacturer: String, cost: String, length: String, maxAtmospheringSpeed: String, crew: String, passengers: String, vehicleClass: String, films: [String]) {
+        self.name = name
+        self.model = model
+        self.manufacturer = manufacturer
+        self.cost = cost
+        self.length = length
+        self.maxAtmospheringSpeed = maxAtmospheringSpeed
+        self.crew = crew
+        self.passengers = passengers
+        self.vehicleClass = vehicleClass
+        self.films = films
+    }
+    
+    // MARK: - Decodable
     
     private enum CodingKeys: String, CodingKey {
         case name
