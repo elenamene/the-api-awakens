@@ -38,3 +38,12 @@ extension NSNumber {
         return formatter.string(from: self)
     }
 }
+
+extension Date {
+    var stringDescription: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        
+        return formatter.string(from: self)
+    }
+}

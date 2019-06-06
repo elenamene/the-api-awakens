@@ -14,7 +14,7 @@ enum DownloadState {
     case failed
 }
 
-class Character: Resource, Decodable, FilmAppearanceTrackable {
+class Character: Resource, Decodable, FilmAppearanceTrackable, VehiclesAppearanceTrackable, StarshipsAppearanceTrackable {
     let name: String
     let height: String
     let mass: String
@@ -76,4 +76,3 @@ extension Character {
         return .people
     }
 }
-

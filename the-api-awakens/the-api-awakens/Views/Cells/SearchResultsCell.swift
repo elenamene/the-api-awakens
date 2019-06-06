@@ -55,8 +55,8 @@ class SearchResultsCell: UITableViewCell {
     
     // MARK - Actions
     
-    @objc func showResourceDetail(sender: Any) {
-        print("test")
-    }
+//    @objc func showResourceDetail(sender: Any) {
+//        print("test")
+//    }
 
 }

@@ -32,6 +32,7 @@
 		F3626306228823C5007A15C3 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3626305228823C5007A15C3 /* RoundButton.swift */; };
 		F362630822884491007A15C3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F362630722884491007A15C3 /* UIView.swift */; };
 		F362630E22885644007A15C3 /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F362630D22885644007A15C3 /* SearchResultsCell.swift */; };
+		F3755B4E22A90EB400E1B7A2 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3755B4D22A90EB400E1B7A2 /* Array.swift */; };
 		F376AE8A22916EB000E9C6E3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376AE8922916EB000E9C6E3 /* UIViewController.swift */; };
 		F3930A78227B480E00598F59 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3930A77227B480E00598F59 /* SearchResultsController.swift */; };
 		F3E0864C2283685900EBDD77 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0864B2283685900EBDD77 /* CharacterViewModel.swift */; };
@@ -75,6 +76,7 @@
 		F3626305228823C5007A15C3 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		F362630722884491007A15C3 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F362630D22885644007A15C3 /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
+		F3755B4D22A90EB400E1B7A2 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		F376AE8922916EB000E9C6E3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		F3930A77227B480E00598F59 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		F3E0864B2283685900EBDD77 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				F3E212A222895BB900F20676 /* UISearchBar.swift */,
 				F376AE8922916EB000E9C6E3 /* UIViewController.swift */,
 				F323A88222A020EF00978629 /* StringDescription.swift */,
+				F3755B4D22A90EB400E1B7A2 /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				F3E212A62289B5CD00F20676 /* StarWarsAPIClient.swift in Sources */,
 				F362630E22885644007A15C3 /* SearchResultsCell.swift in Sources */,
 				F3E212A322895BB900F20676 /* UISearchBar.swift in Sources */,
+				F3755B4E22A90EB400E1B7A2 /* Array.swift in Sources */,
 				F33D1E2322804B5400840BC4 /* PickerDataSource.swift in Sources */,
 				F3551B74227A021400218E72 /* CategoriesDataSource.swift in Sources */,
 				F3E0864E22836EAE00EBDD77 /* VehicleViewModel.swift in Sources */,

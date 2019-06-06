@@ -15,13 +15,19 @@ class StarWarsAPIClient<T: Resource> where T: Decodable {
     }
     
     private static var decoder: JSONDecoder {
-        return JSONDecoder()
+        let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "yyyy-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        
+        return decoder
     }
     
     static func fetch(_ urls: [URL], completion: @escaping (Result<[T], StarWarsError>) -> Void) {
         let group = DispatchGroup()
         var resources: [T] = []
-        
+        print(urls)
         DispatchQueue.global(qos: .background).async {
             for url in urls {
                 group.enter()
@@ -86,7 +92,7 @@ private extension StarWarsAPIClient {
         var currentResponse = response
         var totalResults = response.results
    
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .background).async {
             while let nextPage = currentResponse.next {
                 group.enter()
 

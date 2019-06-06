@@ -52,6 +52,7 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
         case "Vehicles": fetchVehicleNamesFor(cell, at: indexPath)
         case "Starships": fetchStarshipNamesFor(cell, at: indexPath)
         case "Films": fetchFilmNamesFor(cell, at: indexPath)
+        case "Characters": fetchCharactersNamesFor(cell, at: indexPath)
         default: break
         }
         
@@ -69,24 +70,24 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
     }
     
     func fetchVehicleNamesFor(_ cell: AttributeCell, at indexPath: IndexPath) {
-        if let character = resource as? Character, character.vehiclesDownloadState == .notDownloaded {
-            let urls = character.vehicles.map { URL(string: $0)! }
+        if var resource = resource as? VehiclesAppearanceTrackable, resource.vehiclesDownloadState == .notDownloaded {
+            let urls = resource.vehicles.map { URL(string: $0)! }
             
             StarWarsAPIClient<Vehicle>.fetch(urls) { result in
                 switch result {
                 case .success(let vehicles):
                     // Assign the vehicles back to the resource
-                    character.vehiclesDownloaded = vehicles
-                    character.vehiclesDownloadState = .downloaded
+                    resource.vehiclesDownloaded = vehicles
+                    resource.vehiclesDownloadState = .downloaded
                     
                     // Update cell viewModel with character
-                    self.resource = character
+                    self.resource = resource
                     cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
                     
                     // Reload cell
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 case .failure(let error):
-                    character.vehiclesDownloadState = .failed
+                    resource.vehiclesDownloadState = .failed
                     print(error)
                 }
             }
@@ -94,24 +95,25 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
     }
     
     func fetchStarshipNamesFor(_ cell: AttributeCell, at indexPath: IndexPath) {
-        if let character = resource as? Character, character.starshipsDownloadState == .notDownloaded {
-            let urls = character.starships.map { URL(string: $0)! }
+        if var resource = resource as? StarshipsAppearanceTrackable, resource.starshipsDownloadState == .notDownloaded {
+            let urls = resource.starships.map { URL(string: $0)! }
             print("Fetching \(urls.count) urls")
+            
             StarWarsAPIClient<Starship>.fetch(urls) { result in
                 switch result {
                 case .success(let starships):
                     // Assign the vehicles back to the resource
-                    character.starshipsDownloaded = starships
-                    character.starshipsDownloadState = .downloaded
+                    resource.starshipsDownloaded = starships
+                    resource.starshipsDownloadState = .downloaded
                     
                     // Update cell viewModel with character
-                    self.resource = character
+                    self.resource = resource
                     cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
                     
                     // Reload cell
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 case .failure(let error):
-                    character.starshipsDownloadState = .failed
+                    resource.starshipsDownloadState = .failed
                     print(error)
                 }
             }
@@ -119,29 +121,52 @@ class AttributesDataSource: NSObject, UITableViewDataSource {
     }
     
     func fetchFilmNamesFor(_ cell: AttributeCell, at indexPath: IndexPath) {
-        if var resourceToUpdate = resource as? FilmAppearanceTrackable, resourceToUpdate.filmsDownloadState == .notDownloaded {
-            let urls = resourceToUpdate.films.map { URL(string: $0)! }
+        if var resource = resource as? FilmAppearanceTrackable, resource.filmsDownloadState == .notDownloaded {
+            let urls = resource.films.map { URL(string: $0)! }
 
             StarWarsAPIClient<Film>.fetch(urls) { result in
                 switch result {
                 case .success(let films):
                     // Assign the vehicles back to the resource
-                    resourceToUpdate.filmsDownloaded = films
-                    resourceToUpdate.filmsDownloadState = .downloaded
+                    resource.filmsDownloaded = films
+                    resource.filmsDownloadState = .downloaded
                     
                     // Update cell viewModel with character
-                    self.resource = resourceToUpdate as! Resource
+                    self.resource = resource
                     cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
                     
                     // Reload cell
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 case .failure(let error):
-                    resourceToUpdate.filmsDownloadState = .failed
+                    resource.filmsDownloadState = .failed
                     print(error)
                 }
             }
         }
     }
     
-
+    func fetchCharactersNamesFor(_ cell: AttributeCell, at indexPath: IndexPath) {
+        if var resource = resource as? CharactersAppearanceTrackable, resource.charactersDownloadState == .notDownloaded {
+            let urls = resource.characters.map { URL(string: $0)! }
+            
+            StarWarsAPIClient<Character>.fetch(urls) { result in
+                switch result {
+                case .success(let characters):
+                    // Assign the characters back to the resource
+                    resource.charactersDownloaded = characters
+                    resource.charactersDownloadState = .downloaded
+                    
+                    // Update cell viewModel with character
+                    self.resource = resource
+                    cell.viewModel = self.tableViewViewModel?.attributes[indexPath.row]
+                    
+                    // Reload cell
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                case .failure(let error):
+                    resource.charactersDownloadState = .failed
+                    print(error)
+                }
+            }
+        }
+    }
 }

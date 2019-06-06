@@ -48,10 +48,17 @@ class ResourceDetailController: UITableViewController {
     
     lazy var dataSource = AttributesDataSource(from: selectedResource, tableView: self.tableView)
     
+    var smallestResource: Resource?
+    var largestResource: Resource?
+    
     // MARK: - Outlets
     
     @IBOutlet weak var resourceNameTextField: UITextField!
     @IBOutlet weak var iconButton: UIButton!
+    @IBOutlet weak var smallestResourceLabel: UILabel!
+    @IBOutlet weak var largestResourceLable: UILabel!
+    @IBOutlet weak var smallestLabel: UILabel!
+    @IBOutlet weak var largetLabel: UILabel!
     
     // MARK: - View Life Cycle
     
@@ -63,6 +70,18 @@ class ResourceDetailController: UITableViewController {
         // Table View
         tableView.dataSource = dataSource
         dataSource.update(with: selectedResource)
+        
+        // Labels
+        smallestResourceLabel.text = smallestResource?.name
+        largestResourceLable.text = largestResource?.name
+        
+        if category == .films {
+            smallestLabel.text = "Oldest:"
+            largetLabel.text = "Newest:"
+        } else {
+            smallestLabel.text = "Smallest:"
+            largetLabel.text = "Largest:"
+        }
         
         // Name Text Field
         resourceNameTextField.inputView = pickerView

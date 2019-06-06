@@ -8,13 +8,39 @@
 
 import Foundation
 
-struct Film: Decodable, Resource {
+class Film: Decodable, Resource, CharactersAppearanceTrackable, VehiclesAppearanceTrackable, StarshipsAppearanceTrackable {
     var name: String
     let episodeId: Int
     let director: String
     let producer: String
-    let releaseDate: String
-//    var characters: [Character] = []
+    let releaseDate: Date
+    var characters: [String] = []
+    var starships: [String] = []
+    var vehicles: [String] = []
+    
+    // MARK: - Properties to fetch
+    
+    var charactersDownloaded = [Character]()
+    var charactersDownloadState = DownloadState.notDownloaded
+    var starshipsDownloaded = [Starship]()
+    var starshipsDownloadState = DownloadState.notDownloaded
+    var vehiclesDownloaded = [Vehicle]()
+    var vehiclesDownloadState = DownloadState.notDownloaded
+    
+    // MARK: - Init
+    
+    init(name: String, episodeId: Int, director: String, producer: String, releaseDate: Date, characters: [String], starships: [String], vehicles: [String]) {
+        self.name = name
+        self.episodeId = episodeId
+        self.director = director
+        self.producer = producer
+        self.releaseDate = releaseDate
+        self.characters = characters
+        self.starships = starships
+        self.vehicles = vehicles
+    }
+    
+    // MARK: - Decodable
     
     private enum CodingKeys: String, CodingKey {
         case name = "title"
@@ -22,6 +48,9 @@ struct Film: Decodable, Resource {
         case director
         case producer
         case releaseDate = "release_date"
+        case characters
+        case starships
+        case vehicles
     }
 }
 
@@ -33,7 +62,5 @@ extension Film {
     static var endpoint: StarWarsEndpoint {
         return .films
     }
-    
-    
 }
 

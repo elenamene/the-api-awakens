@@ -19,7 +19,6 @@ extension StarshipViewModel {
                 return "\(starship.name) does not appear in any film."
             } else {
                 let filmsArray = starship.filmsDownloaded.map { $0.name }
-                print(filmsArray.joined(separator: ", "))
                 return filmsArray.joined(separator: ", ")
             }
         }

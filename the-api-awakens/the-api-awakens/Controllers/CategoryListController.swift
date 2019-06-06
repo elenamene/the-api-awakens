@@ -74,12 +74,15 @@ extension CategoryListController {
             switch category {
             case .people:
                 
-                // TODO: - ADD [WEAK SELF] TO CLOSURE 
+                // TODO: - ADD [WEAK SELF] TO CLOSURE
+             
                 
                 StarWarsAPIClient<Character>.fetchAll { (result) in
                     switch result {
                     case .success(let resources):
                         resourceDetailController.categoryResources = resources
+                        resourceDetailController.smallestResource = resources.smallest
+                        resourceDetailController.largestResource = resources.largest
                         self.navigationController?.pushViewController(resourceDetailController, animated: true)
                     case .failure(let error):
                         self.showAlert(title: "Network Error", message: "\(error)")
@@ -91,6 +94,8 @@ extension CategoryListController {
                     switch result {
                     case .success(let resources):
                         resourceDetailController.categoryResources = resources
+                        resourceDetailController.smallestResource = resources.smallest
+                        resourceDetailController.largestResource = resources.largest
                         self.navigationController?.pushViewController(resourceDetailController, animated: true)
                     case .failure(let error):
                         self.showAlert(title: "Network Error", message: "\(error)")
@@ -102,6 +107,8 @@ extension CategoryListController {
                     switch result {
                     case .success(let resources):
                         resourceDetailController.categoryResources = resources
+                        resourceDetailController.smallestResource = resources.smallest
+                        resourceDetailController.largestResource = resources.largest
                         self.navigationController?.pushViewController(resourceDetailController, animated: true)
                     case .failure(let error):
                         self.showAlert(title: "Network Error", message: "\(error)")
@@ -113,6 +120,8 @@ extension CategoryListController {
                     switch result {
                     case .success(let resources):
                         resourceDetailController.categoryResources = resources
+                        resourceDetailController.smallestResource = resources.smallest
+                        resourceDetailController.largestResource = resources.largest
                         self.navigationController?.pushViewController(resourceDetailController, animated: true)
                     case .failure(let error):
                         self.showAlert(title: "Network Error", message: "\(error)")
