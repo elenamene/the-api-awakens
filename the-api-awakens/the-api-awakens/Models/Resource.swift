@@ -20,7 +20,7 @@ protocol Resource {
 // MARK: - Protocols Inheriting from Resource
 
 /// A Resource that can track the films it has appeared in
-/// For example all the films a character has appeared in or a starship
+/// For example all the films a character or a starship has appeared in
 protocol FilmAppearanceTrackable: Resource {
     var films: [String] { get }
     var filmsDownloaded: [Film] { get set }
@@ -30,7 +30,7 @@ protocol FilmAppearanceTrackable: Resource {
 }
 
 /// A Resource that can track vehicles
-/// For example all the vehicles a character has piloted or that has appeared in a film
+/// For example all the vehicles a character has piloted
 protocol VehiclesAppearanceTrackable: Resource {
     var vehicles: [String] { get }
     var vehiclesDownloaded: [Vehicle] { get set }
@@ -40,7 +40,7 @@ protocol VehiclesAppearanceTrackable: Resource {
 }
 
 /// A Resource that can track starships
-/// For example all the starships a character has piloted or that has appeared in a film
+/// For example all the starships a character has piloted
 protocol StarshipsAppearanceTrackable: Resource {
     var starships: [String] { get }
     var starshipsDownloaded: [Starship] { get set }

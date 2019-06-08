@@ -15,10 +15,6 @@ class SearchResultsDataSource: NSObject, UITableViewDataSource {
         super.init()
     }
     
-    func update(with results: [Resource]) {
-        self.results = results
-    }
-    
     // MARK: Data Source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,4 +41,18 @@ class SearchResultsDataSource: NSObject, UITableViewDataSource {
     func resource(at indexPath: IndexPath) -> Resource {
         return results[indexPath.row]
     }
+    
+    func update(with results: [Resource]) {
+        self.results = results
+    }
+    
+    func allResources() -> [Resource] {
+        return results
+    }
+    
+    func add(_ results: [Resource]) {
+        self.results.append(contentsOf: results)
+    }
+    
+    
 }

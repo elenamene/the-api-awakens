@@ -10,12 +10,30 @@ import UIKit
 
 class CategoryListController: UITableViewController {
     let dataSource = CategoriesDataSource(categories: [.people, .starships, .vehicles, .films])
+    
+    // Initiate Results Controller from class
+    let resultsController = SearchResultsController()
+    
+    // Initiate Search Controller
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: resultsController)
+        
+        searchController.dimsBackgroundDuringPresentation = false
+//        searchController.searchResultsUpdater = resultsController
+        searchController.searchBar.setDefaultStyle()
+        searchController.searchBar.delegate = resultsController
+        
+        // search bar does not remain on the screen
+        // if the user navigates to another view controller
+        definesPresentationContext = true
+        
+        return searchController
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
-        setupSearchController()
         setupTableView()
     }
     
@@ -33,27 +51,11 @@ class CategoryListController: UITableViewController {
         titleImageView.image = #imageLiteral(resourceName: "logo")
         navigationItem.titleView = titleImageView
         
-        // Hide border shadow
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-    }
-    
-    func setupSearchController() {
-        // Initiate Results Controller from class
-        let resultsController = SearchResultsController()
-        
-        // Initiate Search Controller
-        let searchController = UISearchController(searchResultsController: resultsController)
-        
         // Set search bar in navigation bar
         navigationItem.searchController = searchController
         
-        searchController.dimsBackgroundDuringPresentation = false 
-        searchController.searchResultsUpdater = resultsController
-        searchController.searchBar.setDefaultStyle()
-        
-        // search bar does not remain on the screen
-        // if the user navigates to another view controller
-        definesPresentationContext = true
+        // Hide border shadow
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
     }
 }
 
@@ -70,65 +72,68 @@ extension CategoryListController {
         
         if let resourceDetailController = storyboard.instantiateViewController(withIdentifier: "ResourceDetail") as? ResourceDetailController {
             resourceDetailController.category = category
+            fetch(category, for: resourceDetailController)
+        }
+    }
+    
+    // Helper
+    
+    func fetch(_ category: Category, for viewController: ResourceDetailController) {
+        switch category {
+        case .people:
             
-            switch category {
-            case .people:
-                
-                // TODO: - ADD [WEAK SELF] TO CLOSURE
-             
-                
-                StarWarsAPIClient<Character>.fetchAll { (result) in
-                    switch result {
-                    case .success(let resources):
-                        resourceDetailController.categoryResources = resources
-                        resourceDetailController.smallestResource = resources.smallest
-                        resourceDetailController.largestResource = resources.largest
-                        self.navigationController?.pushViewController(resourceDetailController, animated: true)
-                    case .failure(let error):
-                        self.showAlert(title: "Network Error", message: "\(error)")
-                    }
-                }
-                
-            case .starships:
-                StarWarsAPIClient<Starship>.fetchAll { (result) in
-                    switch result {
-                    case .success(let resources):
-                        resourceDetailController.categoryResources = resources
-                        resourceDetailController.smallestResource = resources.smallest
-                        resourceDetailController.largestResource = resources.largest
-                        self.navigationController?.pushViewController(resourceDetailController, animated: true)
-                    case .failure(let error):
-                        self.showAlert(title: "Network Error", message: "\(error)")
-                    }
-                }
-                
-            case .vehicles:
-                StarWarsAPIClient<Vehicle>.fetchAll { (result) in
-                    switch result {
-                    case .success(let resources):
-                        resourceDetailController.categoryResources = resources
-                        resourceDetailController.smallestResource = resources.smallest
-                        resourceDetailController.largestResource = resources.largest
-                        self.navigationController?.pushViewController(resourceDetailController, animated: true)
-                    case .failure(let error):
-                        self.showAlert(title: "Network Error", message: "\(error)")
-                    }
-                }
-                
-            case .films:
-                StarWarsAPIClient<Film>.fetchAll { (result) in
-                    switch result {
-                    case .success(let resources):
-                        resourceDetailController.categoryResources = resources
-                        resourceDetailController.smallestResource = resources.smallest
-                        resourceDetailController.largestResource = resources.largest
-                        self.navigationController?.pushViewController(resourceDetailController, animated: true)
-                    case .failure(let error):
-                        self.showAlert(title: "Network Error", message: "\(error)")
-                    }
+            // TODO: - ADD [WEAK SELF] TO CLOSURE ?
+            
+            StarWarsAPIClient<Character>.fetchAll { (result) in
+                switch result {
+                case .success(let resources):
+                    viewController.categoryResources = resources
+                    viewController.smallestResource = resources.smallest
+                    viewController.largestResource = resources.largest
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                case .failure(let error):
+                    self.showAlert(title: "Network Error", message: "\(error)")
                 }
             }
             
+        case .starships:
+            StarWarsAPIClient<Starship>.fetchAll { (result) in
+                switch result {
+                case .success(let resources):
+                    viewController.categoryResources = resources
+                    viewController.smallestResource = resources.smallest
+                    viewController.largestResource = resources.largest
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                case .failure(let error):
+                    self.showAlert(title: "Network Error", message: "\(error)")
+                }
+            }
+            
+        case .vehicles:
+            StarWarsAPIClient<Vehicle>.fetchAll { (result) in
+                switch result {
+                case .success(let resources):
+                    viewController.categoryResources = resources
+                    viewController.smallestResource = resources.smallest
+                    viewController.largestResource = resources.largest
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                case .failure(let error):
+                    self.showAlert(title: "Network Error", message: "\(error)")
+                }
+            }
+            
+        case .films:
+            StarWarsAPIClient<Film>.fetchAll { (result) in
+                switch result {
+                case .success(let resources):
+                    viewController.categoryResources = resources
+                    viewController.smallestResource = resources.smallest
+                    viewController.largestResource = resources.largest
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                case .failure(let error):
+                    self.showAlert(title: "Network Error", message: "\(error)")
+                }
+            }
         }
     }
 }

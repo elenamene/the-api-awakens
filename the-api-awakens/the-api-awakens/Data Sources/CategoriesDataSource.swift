@@ -13,6 +13,7 @@ class CategoriesDataSource: NSObject {
     
     init(categories: [Category]) {
         self.categories = categories
+        
         super.init()
     }
 }
@@ -42,4 +43,5 @@ extension CategoriesDataSource: UITableViewDataSource {
     func category(at indexPath: IndexPath) -> Category {
         return categories[indexPath.row]
     }
+    
 }

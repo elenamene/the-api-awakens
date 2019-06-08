@@ -21,11 +21,12 @@ class Film: Decodable, Resource, CharactersAppearanceTrackable, VehiclesAppearan
     // MARK: - Properties to fetch
     
     var charactersDownloaded = [Character]()
-    var charactersDownloadState = DownloadState.notDownloaded
-    var starshipsDownloaded = [Starship]()
-    var starshipsDownloadState = DownloadState.notDownloaded
     var vehiclesDownloaded = [Vehicle]()
+    var starshipsDownloaded = [Starship]()
+    
+    var charactersDownloadState = DownloadState.notDownloaded
     var vehiclesDownloadState = DownloadState.notDownloaded
+    var starshipsDownloadState = DownloadState.notDownloaded
     
     // MARK: - Init
     

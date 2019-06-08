@@ -24,10 +24,11 @@ class StarWarsAPIClient<T: Resource> where T: Decodable {
         return decoder
     }
     
+    /// Generic method to fetch a collection of resiurces from a collection of URLs
     static func fetch(_ urls: [URL], completion: @escaping (Result<[T], StarWarsError>) -> Void) {
         let group = DispatchGroup()
         var resources: [T] = []
-        print(urls)
+        
         DispatchQueue.global(qos: .background).async {
             for url in urls {
                 group.enter()
@@ -72,7 +73,7 @@ class StarWarsAPIClient<T: Resource> where T: Decodable {
 
 private extension StarWarsAPIClient {
     
-    /// Generic method to fetch a single resources of type T
+    /// Generic method to fetch a single URL, it return a resource of type T
     static func fetch(url: URL, completion: @escaping (Result<T, StarWarsError>) -> Void) {
         let request = URLRequest(url: url)
         
@@ -126,7 +127,7 @@ private extension StarWarsAPIClient {
         }
     }
     
-    /// Generic method to request a resource
+    /// Generic method to get a single resource
     static func getResource(request: URLRequest, completion: @escaping (Result<T, StarWarsError>) -> Void) {
         performRequest(with: request) { result in
             switch result {
@@ -154,7 +155,7 @@ private extension StarWarsAPIClient {
         }
     }
     
-    /// Generic method to request a collectionResponse
+    /// Generic method to get a collectionResponse
     static func getCollection(request: URLRequest, completion: @escaping (Result<CollectionResults<T>, StarWarsError>) -> Void) {
         performRequest(with: request) { result in
             switch result {

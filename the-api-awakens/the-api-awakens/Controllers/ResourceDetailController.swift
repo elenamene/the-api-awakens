@@ -30,11 +30,11 @@ class ResourceDetailController: UITableViewController {
         }
     }
     
-    var selectedResource: Resource {
-        let selectedRow = pickerView.selectedRow(inComponent: 0)
-        
-        return pickerDataSource.resource(at: selectedRow)
-    }
+    lazy var selectedResource: Resource = pickerDataSource.resource(at: 0)
+//        let selectedRow = pickerView.selectedRow(inComponent: 0)
+//
+//        return pickerDataSource.resource(at: selectedRow)
+//    }
     
     lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
@@ -46,7 +46,7 @@ class ResourceDetailController: UITableViewController {
         return pickerView
     }()
     
-    lazy var dataSource = AttributesDataSource(from: selectedResource, tableView: self.tableView)
+    lazy var attributesDataSource = AttributesDataSource(from: selectedResource, tableView: self.tableView)
     
     var smallestResource: Resource?
     var largestResource: Resource?
@@ -68,8 +68,8 @@ class ResourceDetailController: UITableViewController {
         iconButton.setImage(category?.iconImage, for: .normal)
         
         // Table View
-        tableView.dataSource = dataSource
-        dataSource.update(with: selectedResource)
+        tableView.dataSource = attributesDataSource
+        attributesDataSource.update(with: selectedResource)
         
         // Labels
         smallestResourceLabel.text = smallestResource?.name
@@ -153,11 +153,11 @@ extension ResourceDetailController: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // Update nameLabel with row selected
+        selectedResource = pickerDataSource.resource(at: row)
         resourceNameTextField.text = selectedResource.name
         
         // Update tableView text with row selected
-        dataSource.update(with: selectedResource)
+        attributesDataSource.update(with: selectedResource)
         tableView.reloadData()
         
         iconButton.isSelected = false
