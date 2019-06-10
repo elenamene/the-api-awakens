@@ -45,3 +45,4 @@ In addition, because all measurements are given in metric units (meters), you wi
 * Added a search bar inside the navigation bar that returns all entitites types with the possibily to filter results
 * Quick bar is also present inside the film section returning the newest and oldest film
 * Added Film category, each film display a list of characters, starships and vehicles appeard in it
+* Table views have dynamic height depending on the content
