@@ -4,7 +4,8 @@
 
 Using what you learned about APIs, Networking, Concurrency, and JSON you will get information about all types of Star Wars entities from the Star Wars API: https://swapi.co/
 
-In the mockup, you will notice that regardless of which view a user is on, there is a bar across the top showing the largest and smallest member of the group. In addition, because all measurements are given in metric units (meters), you will need to create a feature that convert the units to British units (inches), at a tap of a button. For starships and vehicles, students will need to create a button that can convert “Galactic Credits” to US Dollars, based on a exchange rate provided by the user in a text field.
+Regardless of which view a user is on, there is a bar across the top showing the largest and smallest member of the group.
+In addition, because all measurements are given in metric units (meters), you will need to create a feature that convert the units to British units (inches), at a tap of a button. For starships and vehicles, students will need to create a button that can convert “Galactic Credits” to US Dollars, based on a exchange rate provided by the user in a text field.
 
 <img src="https://github.com/elenamene/the-api-awakens/blob/master/appImages/starWarsApp02%402x.png">
 <img src="https://github.com/elenamene/the-api-awakens/blob/master/appImages/starWarsApp01%402x.png">
@@ -21,7 +22,7 @@ In the mockup, you will notice that regardless of which view a user is on, there
 
 5. Create logic such that when a user selects from the pick wheel, all the related fields on the screen are being populated.
 
-6. Create logic to populate the Quick Facts Bar. You may want to use generics for this.
+6. Create logic to populate the Quick Facts Bar.
 
 7. Create a feature such that a user can convert metric units (meters) to British units (inches) with a tap of a button.
 
