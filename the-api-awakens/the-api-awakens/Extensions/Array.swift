@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Get largest or smallest from an array of [Character], [Starship], [Vehicle] or [FIlm]
+
 extension Array where Element: Character {
     var smallest: Character? {
         let arrayOfValidHeights = self.filter { Int($0.height) != nil }

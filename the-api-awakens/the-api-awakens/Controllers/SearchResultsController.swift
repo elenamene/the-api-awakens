@@ -11,18 +11,15 @@ import UIKit
 class SearchResultsController: UITableViewController {
     
     let dataSource = SearchResultsDataSource()
-    
     var allResources: [Resource] = []
-    
     var filteredResults: [Resource] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Table view set up
         tableView.dataSource = dataSource
         tableView.delegate = self
-        
-        // Register the cell class I want to use inside the tableView
         tableView.register(SearchResultsCell.self, forCellReuseIdentifier: SearchResultsCell.reuseIdentifier)
         
         // Table view styling
@@ -33,48 +30,58 @@ class SearchResultsController: UITableViewController {
         fetchAllResources()
     }
     
+    // Networking Helper
+    
     func fetchAllResources() {
-        StarWarsAPIClient<Character>.fetchAll { result in
+        StarWarsAPIClient<Character>.fetchAll { [weak self] result in
             switch result {
             case .success(let results):
-                self.allResources.append(contentsOf: results)
-                self.dataSource.add(self.allResources)
-                self.tableView.reloadData()
+                if let self = self {
+                    self.allResources.append(contentsOf: results)
+                    self.dataSource.add(self.allResources)
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
-                self.showAlert(title: "Network Error", message: "\(error)")
+                self?.showAlert(title: "Network Error", message: "\(error)")
             }
         }
         
-        StarWarsAPIClient<Vehicle>.fetchAll { result in
+        StarWarsAPIClient<Vehicle>.fetchAll { [weak self] result in
             switch result {
             case .success(let results):
-                self.allResources.append(contentsOf: results)
-                self.dataSource.add(self.allResources)
-                self.tableView.reloadData()
+                if let self = self {
+                    self.allResources.append(contentsOf: results)
+                    self.dataSource.add(self.allResources)
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
-                self.showAlert(title: "Network Error", message: "\(error)")
+                self?.showAlert(title: "Network Error", message: "\(error)")
             }
         }
         
-        StarWarsAPIClient<Starship>.fetchAll { result in
+        StarWarsAPIClient<Starship>.fetchAll { [weak self] result in
             switch result {
             case .success(let results):
-                self.allResources.append(contentsOf: results)
-                self.dataSource.add(self.allResources)
-                self.tableView.reloadData()
+                if let self = self {
+                    self.allResources.append(contentsOf: results)
+                    self.dataSource.add(self.allResources)
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
-                self.showAlert(title: "Network Error", message: "\(error)")
+                self?.showAlert(title: "Network Error", message: "\(error)")
             }
         }
         
-        StarWarsAPIClient<Film>.fetchAll { result in
+        StarWarsAPIClient<Film>.fetchAll { [weak self] result in
             switch result {
             case .success(let results):
-                self.allResources.append(contentsOf: results)
-                self.dataSource.add(self.allResources)
-                self.tableView.reloadData()
+                if let self = self {
+                    self.allResources.append(contentsOf: results)
+                    self.dataSource.add(self.allResources)
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
-                self.showAlert(title: "Network Error", message: "\(error)")
+                self?.showAlert(title: "Network Error", message: "\(error)")
             }
         }
     }
@@ -96,10 +103,6 @@ extension SearchResultsController: UISearchBarDelegate {
         dataSource.update(with: filteredResults)
         tableView.reloadData()
     }
-    
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        
-    }
 }
 
 // MARK: - TableView Delegate
@@ -112,69 +115,66 @@ extension SearchResultsController {
             let selectedResource = dataSource.resource(at: indexPath)
             let category = selectedResource.category
             
-            present(resourceDetailController, for: category, with: selectedResource)
+            present(resourceDetailController, with: category, and: selectedResource)
         }
     }
     
     // Helper
     
-    func present(_ viewController: ResourceDetailController, for category: Category, with selectedResource: Resource) {
+    func present(_ viewController: ResourceDetailController, with category: Category, and selectedResource: Resource) {
         viewController.category = category
         viewController.selectedResource = selectedResource
         
         switch category {
         case .people:
-            
-            // TODO: - ADD [WEAK SELF] TO CLOSURE ?
-            
-            StarWarsAPIClient<Character>.fetchAll { (result) in
+            StarWarsAPIClient<Character>.fetchAll { [weak self] result in
                 switch result {
                 case .success(let resources):
                     viewController.categoryResources = resources
                     viewController.smallestResource = resources.smallest
                     viewController.largestResource = resources.largest
-                    self.presentingViewController?.navigationController?.pushViewController(viewController, animated: true)
+                    self?.presentingViewController?.navigationController?.pushViewController(viewController, animated: true)
                 case .failure(let error):
-                    self.showAlert(title: "Network Error", message: "\(error)")
+                    self?.showAlert(title: "Network Error", message: "\(error)")
                 }
             }
             
         case .starships:
-            StarWarsAPIClient<Starship>.fetchAll { (result) in
+            StarWarsAPIClient<Starship>.fetchAll { [weak self] result in
                 switch result {
                 case .success(let resources):
                     viewController.categoryResources = resources
                     viewController.smallestResource = resources.smallest
                     viewController.largestResource = resources.largest
-                    self.presentingViewController?.navigationController?.pushViewController(viewController, animated: true)
+                    self?.presentingViewController?.navigationController?.pushViewController(viewController, animated: true)
                 case .failure(let error):
-                    self.showAlert(title: "Network Error", message: "\(error)")
+                    self?.showAlert(title: "Network Error", message: "\(error)")
                 }
             }
             
         case .vehicles:
-            StarWarsAPIClient<Vehicle>.fetchAll { (result) in
+            StarWarsAPIClient<Vehicle>.fetchAll { [weak self] result in
                 switch result {
                 case .success(let resources):
                     viewController.categoryResources = resources
                     viewController.smallestResource = resources.smallest
                     viewController.largestResource = resources.largest
-                    self.presentingViewController?.navigationController?.pushViewController(viewController, animated: true)
+                    self?.presentingViewController?.navigationController?.pushViewController(viewController, animated: true)
                 case .failure(let error):
-                    self.showAlert(title: "Network Error", message: "\(error)")
+                    self?.showAlert(title: "Network Error", message: "\(error)")
                 }
             }
             
         case .films:
-            StarWarsAPIClient<Film>.fetchAll { (result) in
+            StarWarsAPIClient<Film>.fetchAll { [weak self] result in
                 switch result {
                 case .success(let resources):
                     viewController.categoryResources = resources
                     viewController.smallestResource = resources.smallest
                     viewController.largestResource = resources.largest
-                    self.presentingViewController?.navigationController?.pushViewController(viewController, animated: true)
+                    self?.presentingViewController?.navigationController?.pushViewController(viewController, animated: true)
                 case .failure(let error):
-                    self.showAlert(title: "Network Error", message: "\(error)")
+                    self?.showAlert(title: "Network Error", message: "\(error)")
                 }
             }
         }

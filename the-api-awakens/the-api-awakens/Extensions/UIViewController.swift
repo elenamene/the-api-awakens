@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// MARK: - Alert Helpers
+
 extension UIViewController {
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

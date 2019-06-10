@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Formatters for view models
+
 extension Measurement {
     func stringDescription() -> String {
         let formatter = MeasurementFormatter()

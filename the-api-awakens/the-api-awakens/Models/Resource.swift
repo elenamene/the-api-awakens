@@ -25,8 +25,6 @@ protocol FilmAppearanceTrackable: Resource {
     var films: [String] { get }
     var filmsDownloaded: [Film] { get set }
     var filmsDownloadState: DownloadState { get set }
-    
-    // add fetch func?
 }
 
 /// A Resource that can track vehicles
@@ -35,8 +33,6 @@ protocol VehiclesAppearanceTrackable: Resource {
     var vehicles: [String] { get }
     var vehiclesDownloaded: [Vehicle] { get set }
     var vehiclesDownloadState: DownloadState { get set }
-    
-    // add fetch func?
 }
 
 /// A Resource that can track starships
@@ -45,8 +41,6 @@ protocol StarshipsAppearanceTrackable: Resource {
     var starships: [String] { get }
     var starshipsDownloaded: [Starship] { get set }
     var starshipsDownloadState: DownloadState { get set }
-    
-    // add fetch func?
 }
 
 /// A Resource that can track characters
@@ -55,7 +49,5 @@ protocol CharactersAppearanceTrackable: Resource {
     var characters: [String] { get }
     var charactersDownloaded: [Character] { get set }
     var charactersDownloadState: DownloadState { get set }
-    
-    // add fetch func?
 }
 

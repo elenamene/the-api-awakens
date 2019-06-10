@@ -31,17 +31,11 @@ class ResourceDetailController: UITableViewController {
     }
     
     lazy var selectedResource: Resource = pickerDataSource.resource(at: 0)
-//        let selectedRow = pickerView.selectedRow(inComponent: 0)
-//
-//        return pickerDataSource.resource(at: selectedRow)
-//    }
     
     lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
-        
         pickerView.delegate = self
         pickerView.dataSource = pickerDataSource
-        pickerView.selectRow(0, inComponent: 0, animated: true)
         
         return pickerView
     }()
@@ -71,7 +65,7 @@ class ResourceDetailController: UITableViewController {
         tableView.dataSource = attributesDataSource
         attributesDataSource.update(with: selectedResource)
         
-        // Labels
+        // Smallest and Largest Labels
         smallestResourceLabel.text = smallestResource?.name
         largestResourceLable.text = largestResource?.name
         
@@ -123,20 +117,14 @@ extension ResourceDetailController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Add alert for currency convertion if cell is CurrencyConvertibleAttribute
         if let cell = cell as? AttributeCell, let viewModel = cell.viewModel as? CurrencyConvertibleAttribute { 
-            cell.showExchangeRateAlert = { [weak self] in
-                self?.showAlertWithTextInput(title: "Enter Exchange Rate",
-                                             message: "Please enter what you think is the exchange rate between Galactic Credits and US Dollars",
-                                             inputPlaceholder: "0.62",
-                                             inputKeyboardType: .numbersAndPunctuation,
-                                             actionTitle: "Convert",
-                                             cancelTitle: "Cancel",
-                                             cancelHandler: { (UIAlertAction) in
-                                                cell.conversionControl.selectedSegmentIndex = 0 },
-                                             actionHandler: { (text) in
+            cell.showExchangeRateAlert = { [unowned self] in
+                self.showAlertWithTextInput(title: "Enter Exchange Rate", message: "Please enter what you think is the exchange rate between Galactic Credits and US Dollars", inputPlaceholder: "0.62", inputKeyboardType: .numbersAndPunctuation, actionTitle: "Convert", cancelTitle: "Cancel", cancelHandler: { (UIAlertAction) in
+                    cell.conversionControl.selectedSegmentIndex = 0
+                }, actionHandler: { (text) in
                     if let text = text, let exchangeRate = Double(text), exchangeRate > 0 {
                         cell.descriptionLabel.text = viewModel.convertValue(with: exchangeRate)
                     } else {
-                        self?.showAlert(title: "Invalid Exchange Rate", message: "Exchange rate needs to be a number grater than 0.")
+                        self.showAlert(title: "Invalid Exchange Rate", message: "Exchange rate needs to be a number grater than 0.")
                         cell.conversionControl.selectedSegmentIndex = 0
                     }
                 })
@@ -159,8 +147,6 @@ extension ResourceDetailController: UIPickerViewDelegate {
         // Update tableView text with row selected
         attributesDataSource.update(with: selectedResource)
         tableView.reloadData()
-        
-        iconButton.isSelected = false
     }
 }
 
@@ -169,11 +155,9 @@ extension ResourceDetailController: UIPickerViewDelegate {
 extension ResourceDetailController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.dropShadow(color: .white)
-        iconButton.isSelected = true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.dropShadow(color: .clear, opacity: 0, radius: 0)
-        iconButton.isSelected = false
     }
 }

@@ -21,6 +21,7 @@ class AttributeCell: UITableViewCell {
     var viewModel: AttributeViewModel? {
         didSet {
             if let viewModel = viewModel {
+                
                 // Update cell labels
                 nameLabel.text = viewModel.name
                 descriptionLabel.text = viewModel.description
