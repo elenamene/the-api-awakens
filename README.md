@@ -36,7 +36,6 @@ In addition, because all measurements are given in metric units (meters), you wi
 ### Extra Credit
 
 * When a person is selected, all (if any) associated vehicles, starships anfd films are listed as well
-
 * All the data returned from the API is used to populate the picker, not just the first page of returned data
 
 ### Personal Enhancements
