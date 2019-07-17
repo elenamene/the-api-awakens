@@ -9,7 +9,7 @@ Regardless of which view a user is on, there is a bar across the top showing the
 In addition, because all measurements are given in metric units (meters), the app has a feature that converts the units to British units (inches), at a tap of a button. For starships and vehicles, it converts “Galactic Credits” to US Dollars, based on a exchange rate provided by the user in a text field.
 
 Use of: 
-* UITableViews
+* Dynamic UITableViews and Custom Cells
 * Asynchronous API call and Error handling
 * Autolayout
 * Data Modelling
