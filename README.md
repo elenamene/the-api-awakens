@@ -1,11 +1,19 @@
-# the-api-awakens
+# The Api Awakens
 
-## iOS Techdegree Project 5
+## iOS Techdegree Project 6
 
-Using what you learned about APIs, Networking, Concurrency, and JSON you will get information about all types of Star Wars entities from the Star Wars API: https://swapi.co/
+The API Awakens is an app that gets information about all types of Star Wars entities from the Star Wars API: https://swapi.co/.
 
 Regardless of which view a user is on, there is a bar across the top showing the largest and smallest member of the group.
-In addition, because all measurements are given in metric units (meters), you will need to create a feature that convert the units to British units (inches), at a tap of a button. For starships and vehicles, students will need to create a button that can convert “Galactic Credits” to US Dollars, based on a exchange rate provided by the user in a text field.
+
+In addition, because all measurements are given in metric units (meters), the app has a feature that converts the units to British units (inches), at a tap of a button. For starships and vehicles, it converts “Galactic Credits” to US Dollars, based on a exchange rate provided by the user in a text field.
+
+Use of: 
+* UITableViews
+* Asynchronous API call and Error handling
+* Autolayout
+* Data Modelling
+* Generics
 
 <img src="https://github.com/elenamene/the-api-awakens/blob/master/appImages/starWarsApp02%402x.png">
 <img src="https://github.com/elenamene/the-api-awakens/blob/master/appImages/starWarsApp01%402x.png">
@@ -44,4 +52,4 @@ In addition, because all measurements are given in metric units (meters), you wi
 * Added a search bar inside the navigation bar that returns all entitites types with the possibily to filter results
 * Quick bar is also present inside the film section returning the newest and oldest film
 * Added Film category, each film display a list of characters, starships and vehicles appeard in it
-* Table views have dynamic height depending on the content
+* The table view displays dinamically the content: depending on the entity type, the table view model automatically generates a cell for each entity attribute
